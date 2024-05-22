@@ -1,0 +1,19 @@
+.dayTenOutline {
+    /* border: 2px solid red; */
+    height: 100%;
+    display: flex;              /* Align children in a row */
+    overflow-x: auto;           /* Enable horizontal scrolling */
+    white-space: nowrap;        /* Ensure the children don't wrap to the next line */
+    padding: 10px;   
+}
+
+.DayTenViewIndividual {
+    /* border: 1px solid green; */
+    height: 100%;
+    margin-right: 5px;
+}
+
+.DayTenGraph {
+    /* border: 1px solid orangered; */
+    /* height: 30%; */
+}

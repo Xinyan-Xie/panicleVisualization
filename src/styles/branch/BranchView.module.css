@@ -1,0 +1,82 @@
+.branchView {
+  position: relative;
+  border: 2px solid darkgray;
+  float: left;
+  height: 1350px;
+  width: 100%;
+}
+
+.branchTitle {
+  background-color: lightgrey;
+  height: 45px;
+  margin: 3px 2px 3px 2px;
+  text-align: center; 
+  font-size: 28px;
+  font-weight: normal;
+}
+
+.branchHeight, .branchSpread {
+  position: absolute;
+  left: 1px;
+  border: 2px solid darkgray;
+  border: 2px solid red;
+  width: 48%;
+  margin: 3px auto 3px auto;
+  height: 48%;
+}
+
+.dayTenView {
+  position: absolute;
+  left: 50%;
+  border: 2px solid darkgray;
+  width: 49%;
+  margin: 3px auto 3px auto;
+  height: 95%;
+}
+
+
+.branchHeightName, .branchSpreadName, .dayTenViewName {
+  background-color: lightgrey;
+  height: 36px;
+  margin: 3px 2px 3px 2px;
+  text-align: center; 
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.dayTenViewContent {
+  width: 100%;
+  border: 2px solid green;
+}
+
+
+.dayTenViewContent {
+  width: 100%;
+  border: 2px solid green;
+}
+
+
+.branchHeightPlot, .branchSpreadPlot  {
+  position: absolute;
+  left: 2px;
+  bottom: 1px;
+  border: 2px solid darkgray;
+  width: 98%;
+  margin: 3px auto 3px auto;
+  height: 90%;
+}
+
+
+
+.branchSpread {
+  bottom: 1px;
+}
+
+
+
+
+
+
+.dayTenViewPlot {
+  height: 95%;
+}

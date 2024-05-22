@@ -1,0 +1,30 @@
+.dayTenViewPlot {
+  position: relative;
+  /* left: 2px; */
+  /* bottom: 1px; */
+  /* border: 2px solid red; */
+  height: 500px;
+  /* width: 98%; */
+  /* margin: 3px auto 3px auto; */
+  /* height: 90%; */
+  overflow-x: auto;
+
+  display: flex;              /* Align children in a row */
+  overflow-x: auto;           /* Enable horizontal scrolling */
+  white-space: nowrap;        /* Ensure the children don't wrap to the next line */
+  padding: 10px;   
+}
+
+.DayTenViewIndividual {
+  /* float: left; */
+  width: 200px;
+  height: 500px;
+  /* border: 1px solid red; */
+
+  flex: 0 0 auto;             /* Do not grow, do not shrink, and based on content width */           /* Fixed height for each child */
+  /* margin-right: 10px;         Adds spacing between children */
+  background-color: #f0f0f0;  /* Gives a background color for visibility */
+  border: 1px solid #ccc;     /* Adds a border for better visibility */
+  line-height: 100px;         /* Vertically centers text in the child */
+  text-align: center;   
+}

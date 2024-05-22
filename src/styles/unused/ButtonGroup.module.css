@@ -1,0 +1,47 @@
+.DimensionTitle{
+    grid-template-rows: 1fr;
+    display: top;
+    }
+
+    /* ButtonGroup.css */
+.button-group {
+    font-family: Arial, sans-serif;
+    user-select: none; /* This will prevent text selection when clicking buttons rapidly */
+  }
+  
+  .category {
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .button:hover {
+    border-color: #007bff;
+  }
+  
+  .button.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+  
+  .button.selected::after {
+    content: '✓';
+    margin-left: 4px;
+  }
+  
+      

@@ -1,0 +1,13 @@
+.segmentIndividualLabelsGroup {
+  width: 98%;
+  position: relative;
+  margin: auto;
+  /* border: 2px solid black; */
+}
+
+.segmentIndividualLabelsGroupEach {
+  float: left;
+  width: 98%;
+  aspect-ratio: 1 / 1.207;
+  /* border: 1px solid lightgrey; */
+}

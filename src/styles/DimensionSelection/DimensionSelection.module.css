@@ -1,0 +1,20 @@
+.dimensionSelection {
+  position: relative;
+  border: 2px solid darkgray;
+  height: 370px;
+  /* width: 400px; */
+}
+  
+.dimensionTitle{
+  background-color: lightgrey;
+  height: 45px;
+  width: 98%;
+  margin: 3px 2px 3px 2px;
+  text-align: center; 
+  /* font-size: 2vw; */
+  font-size: 28px;
+  font-weight: normal;
+  /* margin-bottom: 20px;  */
+  /* grid-template-rows: 1fr; */
+  /* display: top; */
+}

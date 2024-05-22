@@ -1,0 +1,23 @@
+.segmentIndividualChartsGroup {
+  height: 93%;
+  width: 98%;
+  /* margin: auto; */
+  position: relative;
+  left: 1%;
+  /* border: 2px solid red; */
+}
+
+.segmentIndividualChartsGroupRow {
+  width: 100%;
+  float: left;
+  position: relative;
+  left: 1%;
+  aspect-ratio: 3 / 1;
+  /* border: 1px solid red; */
+}
+.segmentIndividualChartsGroupEach {
+  float: left;
+  width: 32.5%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid lightgrey;
+}
