@@ -1,0 +1,259 @@
+{
+    "sampleName": "HC5_H_7D",
+    "samplePath": "HC5_HS4/rgbaOutput_7_17_23_C1_HC5_HS4_7D_0",
+    "panicle": {
+        "noTopSeeds": 11,
+        "height": 204.3031375892469,
+        "volume": 7126.3259257141535,
+        "maxSpreadVal": 35.90073086864992,
+        "colAvgR": 0.5389224266443144,
+        "colAvgG": 0.6075353536514733,
+        "colAvgB": 0.30008393226754027,
+        "maxSpreadPos": [
+            35.96289263034223,
+            49.21684943152793,
+            131.5602513011613
+        ],
+        "basePos": [
+            18.766379321706225,
+            17.702687425706834,
+            18.182193449435992
+        ]
+    },
+    "segment": {
+        "segmentInd_0": {
+            "endHeight": 68.10104586308229,
+            "volumeSeg": 1084.8196240019079,
+            "maxSpreadSegVal": 12.215546456162055,
+            "noTopSeedSeg": 0,
+            "colAvgR": 0.4826539705331398,
+            "colAvgG": 0.5549586399519207,
+            "colAvgB": 0.26203849775015126,
+            "maxSpreadSegPos": [
+                30.866927388369056,
+                16.03046982352829,
+                67.82716808854474
+            ]
+        },
+        "segmentInd_1": {
+            "endHeight": 136.20209172616458,
+            "volumeSeg": 3584.591068486149,
+            "maxSpreadSegVal": 35.90073086864992,
+            "noTopSeedSeg": 4,
+            "colAvgR": 0.5379132932332974,
+            "colAvgG": 0.6127465274600735,
+            "colAvgB": 0.28986978928427803,
+            "maxSpreadSegPos": [
+                35.96289263034223,
+                49.21684943152793,
+                131.5602513011613
+            ]
+        },
+        "segmentInd_2": {
+            "endHeight": 204.3031375892469,
+            "volumeSeg": 2456.8281271056535,
+            "maxSpreadSegVal": 26.355000906809707,
+            "noTopSeedSeg": 7,
+            "colAvgR": 0.565242291208264,
+            "colAvgG": 0.6231505330371421,
+            "colAvgB": 0.3317751337371704,
+            "maxSpreadSegPos": [
+                34.28489847264487,
+                39.00436895932974,
+                202.53002155603755
+            ]
+        }
+    },
+    "branch": {
+        "branchInd_0": {
+            "branchHeight": 71.75112667784344,
+            "branchSpread": 9.790192675014172
+        },
+        "branchInd_1": {
+            "branchHeight": 97.77946500146061,
+            "branchSpread": 7.6286414502166515
+        },
+        "branchInd_2": {
+            "branchHeight": 114.09601214482365,
+            "branchSpread": 22.4098002121048
+        },
+        "branchInd_3": {
+            "branchHeight": 124.7949497814152,
+            "branchSpread": 14.69445046105366
+        },
+        "branchInd_4": {
+            "branchHeight": 139.09503192383937,
+            "branchSpread": 11.785687330960805
+        },
+        "branchInd_5": {
+            "branchHeight": 145.88891005478763,
+            "branchSpread": 21.085223030450095
+        },
+        "branchInd_6": {
+            "branchHeight": 173.8164500962963,
+            "branchSpread": 20.92271155842569
+        },
+        "branchInd_7": {
+            "branchHeight": 185.27314174333586,
+            "branchSpread": 17.733612656864075
+        },
+        "branchInd_8": {
+            "branchHeight": 186.52929670972495,
+            "branchSpread": 19.820666830676466
+        },
+        "branchInd_9": {
+            "branchHeight": 202.45748638535596,
+            "branchSpread": 18.136386963359925
+        },
+        "branchInd_10": {
+            "branchHeight": 204.29975017089814,
+            "branchSpread": 18.595364099947137
+        }
+    },
+    "topSeeds": {
+        "TopSeedInd_0": {
+            "topSeedRealInd": 0.0,
+            "topSeedFileInd": 10.0,
+            "topSeedSpread": 9.790192675014172,
+            "colAvgR": 127.08130081300813,
+            "colAvgG": 147.0731707317073,
+            "colAvgB": 58.266666666666666,
+            "topSeedPos": [
+                28.13835837676153,
+                19.157241714232708,
+                71.75112667784344
+            ]
+        },
+        "TopSeedInd_1": {
+            "topSeedRealInd": 1.0,
+            "topSeedFileInd": 2.0,
+            "topSeedSpread": 7.6286414502166515,
+            "colAvgR": 158.1688654353562,
+            "colAvgG": 174.02242744063324,
+            "colAvgB": 91.72163588390501,
+            "topSeedPos": [
+                21.035020115028587,
+                20.20060421838353,
+                97.77946500146061
+            ]
+        },
+        "TopSeedInd_2": {
+            "topSeedRealInd": 2.0,
+            "topSeedFileInd": 0.0,
+            "topSeedSpread": 22.4098002121048,
+            "colAvgR": 143.58945908460473,
+            "colAvgG": 161.51456310679612,
+            "colAvgB": 81.29542302357837,
+            "topSeedPos": [
+                39.81542796987916,
+                15.421447633775763,
+                114.09601214482365
+            ]
+        },
+        "TopSeedInd_3": {
+            "topSeedRealInd": 3.0,
+            "topSeedFileInd": 1.0,
+            "topSeedSpread": 14.69445046105366,
+            "colAvgR": 155.86657101865137,
+            "colAvgG": 173.3113342898135,
+            "colAvgB": 89.92252510760402,
+            "topSeedPos": [
+                23.224359506107717,
+                31.445148306499366,
+                124.7949497814152
+            ]
+        },
+        "TopSeedInd_4": {
+            "topSeedRealInd": 4.0,
+            "topSeedFileInd": 3.0,
+            "topSeedSpread": 11.785687330960805,
+            "colAvgR": 165.1703056768559,
+            "colAvgG": 179.72052401746726,
+            "colAvgB": 102.09170305676857,
+            "topSeedPos": [
+                26.96605783143526,
+                23.551611054939002,
+                139.09503192383937
+            ]
+        },
+        "TopSeedInd_5": {
+            "topSeedRealInd": 5.0,
+            "topSeedFileInd": 9.0,
+            "topSeedSpread": 21.085223030450095,
+            "colAvgR": 131.81892523364485,
+            "colAvgG": 145.91705607476635,
+            "colAvgB": 70.4053738317757,
+            "topSeedPos": [
+                36.601348332979306,
+                27.58156764198079,
+                145.88891005478763
+            ]
+        },
+        "TopSeedInd_6": {
+            "topSeedRealInd": 6.0,
+            "topSeedFileInd": 4.0,
+            "topSeedSpread": 20.92271155842569,
+            "colAvgR": 135.74188790560473,
+            "colAvgG": 150.91445427728613,
+            "colAvgB": 78.476401179941,
+            "topSeedPos": [
+                36.11532779064506,
+                26.86282510088734,
+                173.8164500962963
+            ]
+        },
+        "TopSeedInd_7": {
+            "topSeedRealInd": 7.0,
+            "topSeedFileInd": 8.0,
+            "topSeedSpread": 17.733612656864075,
+            "colAvgR": 132.125748502994,
+            "colAvgG": 145.60479041916167,
+            "colAvgB": 75.28622754491018,
+            "topSeedPos": [
+                31.925784276038435,
+                26.48859504770353,
+                185.27314174333586
+            ]
+        },
+        "TopSeedInd_8": {
+            "topSeedRealInd": 8.0,
+            "topSeedFileInd": 7.0,
+            "topSeedSpread": 19.820666830676466,
+            "colAvgR": 166.69705469845724,
+            "colAvgG": 180.5287517531557,
+            "colAvgB": 107.57363253856943,
+            "topSeedPos": [
+                30.130142580752995,
+                33.58892291278842,
+                186.52929670972495
+            ]
+        },
+        "TopSeedInd_9": {
+            "topSeedRealInd": 9.0,
+            "topSeedFileInd": 6.0,
+            "topSeedSpread": 18.136386963359925,
+            "colAvgR": 166.42926829268293,
+            "colAvgG": 177.84268292682927,
+            "colAvgB": 103.70975609756097,
+            "topSeedPos": [
+                26.74968716206308,
+                29.25188427393056,
+                202.45748638535596
+            ]
+        },
+        "TopSeedInd_10": {
+            "topSeedRealInd": 10.0,
+            "topSeedFileInd": 5.0,
+            "topSeedSpread": 18.595364099947137,
+            "colAvgR": 171.2059202059202,
+            "colAvgG": 179.4169884169884,
+            "colAvgB": 110.15186615186616,
+            "topSeedPos": [
+                30.707791219460667,
+                29.262747552873773,
+                204.29975017089814
+            ]
+        }
+    },
+    "branch10Day": {}
+}
