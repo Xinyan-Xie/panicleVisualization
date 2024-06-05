@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { ForceGraph3D } from 'react-force-graph';
-import * as THREE from 'three';
-import styles from '../../../styles/branch/branchDay10/BranchDay10PCView.module.css';
 import PointCloud from './PointCloud';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -11,7 +8,6 @@ const BranchDay10PCView = ( {chartsBranchDataSample, branchIndex} ) => {
   const [points, setPoints] = useState([]);
 
   useEffect(() => {
-    console.log("***** chartsBranchDataSample, ", chartsBranchDataSample)
     let minX = 1000;
     let maxX = -1000;
     let minY = 1000;
@@ -21,7 +17,6 @@ const BranchDay10PCView = ( {chartsBranchDataSample, branchIndex} ) => {
     let branchName = chartsBranchDataSample["link"].substring(0, 5) + '/' + 
                      chartsBranchDataSample["link"].split('_Info')[0] + '/branch/' + 
                      chartsBranchDataSample["link"].split('_Info')[0] + '_branches_' + branchIndex + '.txt'
-    console.log("*** branchName, ", branchName)
     fetch(`/data/branchDay10/${branchName}`)
     .then(response => response.text())
     .then(text => {
@@ -72,7 +67,7 @@ const BranchDay10PCView = ( {chartsBranchDataSample, branchIndex} ) => {
     <div>
       <Canvas
         camera={{ position: [0, 1.5, 0], fov: 60 }}
-        style={{ background: 'white', height: '200px', width: '200px' }}>
+        style={{ background: 'white', height: '200px', width: '200px', border: '1px solid darkgray' }}>
         <ambientLight intensity={1.0} />
         <pointLight position={[10, 10, 10]} />
         <PointCloud points={points} />

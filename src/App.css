@@ -1,6 +1,6 @@
 .App {
   display: grid;
-  grid-template-columns: 2fr 5fr 7fr; 
+  grid-template-columns: 2fr 4fr 8fr; 
   gap: 10px;
   padding: 10px;
   height: 1500px; 

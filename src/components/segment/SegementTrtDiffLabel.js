@@ -3,7 +3,6 @@ import styles from '../../styles/segment/SegementIndividualRadarLabel.module.css
 
 
 const SegementTrtDiffLabel = ({ chartsData }) => {
-  console.log("chartsData in TrtDiff, ", chartsData)
   const gridRefs = useRef([]);
   gridRefs.current = Array(chartsData["trtMap"]["count"]).fill().map(() => React.createRef());
   useEffect(() => {
@@ -14,13 +13,15 @@ const SegementTrtDiffLabel = ({ chartsData }) => {
         if (div) {
           div.innerHTML = `
             <div style="width: 90%;
-                        position: relative;
-                        // top: 20%;
-                        left: 5%;
-                        text-align: center;
-                        font-size: 20px;
-                        background-color: lightgrey;
-                        border: 1px solid black;">
+                  position: relative;
+                  // top: 20%;
+                  left: 5%;
+                  text-align: center;
+                  font-size: 18px;
+                  font-weight: bold;
+                  // background-color: lightgrey;
+                  border-radius: 10px;
+                  border: 1px solid black; >    
               <div style="text-align: center;">${trtKey}</div>
             <div>`;
         
@@ -33,8 +34,9 @@ const SegementTrtDiffLabel = ({ chartsData }) => {
         }
       }
     });
-  }
-);   
+  }, [chartsData]);   
+  // });
+   
   
   return (
     <div className={styles.segmentIndividualLabelsGroup}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/unused/DimensionColorMapping.module.css'
+import styles from '../../styles/DimensionSelection/DimensionColorMapping.module.css'
 
 // Mapping from genotype x treatment combinations to colors
 const colorMapping = {

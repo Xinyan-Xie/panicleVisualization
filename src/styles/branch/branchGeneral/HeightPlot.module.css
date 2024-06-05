@@ -1,0 +1,35 @@
+.branchHeightPlot  {
+  position: relative;
+  /* border: 1px solid orange; */
+  height: 95%;
+
+  display: flex;              /* Align children in a row */
+  overflow-x: auto;           /* Enable horizontal scrolling */
+  white-space: nowrap;        /* Ensure the children don't wrap to the next line */
+  padding: 10px;   
+}
+
+.branchHeightPlotEach {
+  /* float: left; */
+  width: 80px;
+  height: 480px;
+  margin: 20px 10px 20px 10px;
+  /* border: 3px solid crimson; */
+  /* border: 1px solid red; */
+
+  /* flex: 0 0 auto;             Do not grow, do not shrink, and based on content width           Fixed height for each child */
+  /* margin-right: 10px;         Adds spacing between children */
+  background-color: #f0f0f0;  /* Gives a background color for visibility */
+  border: 1px solid black;     /* Adds a border for better visibility */
+  line-height: 100px;         /* Vertically centers text in the child */
+  text-align: center;   
+  position: relative;
+}
+
+.verticalRuler {
+  /* Add specific styles for the vertical ruler div */
+  margin-left: 5px;
+  width: 50px;
+  border: 2px solid transparent;
+  background-color: transparent;
+}

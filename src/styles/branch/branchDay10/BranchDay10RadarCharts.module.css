@@ -1,0 +1,8 @@
+.branchDay10RadarChart {
+    background: white;
+    height: 200px;
+    width: 200px;
+    border: 1px solid darkgray;
+    margin-top: 10px;
+    position: relative;
+}

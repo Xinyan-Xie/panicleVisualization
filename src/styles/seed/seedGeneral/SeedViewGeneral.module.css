@@ -1,0 +1,26 @@
+.seedViewGeneral {
+  /* border: 2px solid green; */
+  width: 35%;
+  position: relative;
+  left: 0.25%;
+  height: 1175px;
+}
+
+.seedVector {
+  position: relative;
+  border: 1px solid darkgray;
+  /* border: 2px solid red; */
+  /* width: 48%; */
+  /* margin: 3px auto 3px auto; */
+  height: 800px;
+  margin: 3px auto 3px auto;
+}
+
+.seedVectorName {
+  background-color: lightgrey;
+  height: 36px;
+  margin: 3px 2px 3px 2px;
+  text-align: center; 
+  font-size: 24px;
+  font-weight: normal;
+}

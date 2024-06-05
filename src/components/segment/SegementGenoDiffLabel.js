@@ -17,9 +17,12 @@ const SegementGenoDiffLabel = ({ chartsData }) => {
                         // top: 20%;
                         left: 5%;
                         text-align: center;
-                        font-size: 20px;
-                        background-color: lightgrey;
-                        border: 1px solid black;">
+                        font-size: 18px;
+                        font-weight: bold;
+                        // background-color: lightgrey;
+                        border-radius: 10px;
+                        border: 1px solid black;    
+              >
               <div style="text-align: center;">${genoKey}</div>
             <div>`;
         

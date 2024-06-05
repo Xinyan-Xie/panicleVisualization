@@ -1,8 +1,9 @@
 .branchView {
   position: relative;
   border: 2px solid darkgray;
+  /* border: 2px solid red; */
   float: left;
-  height: 1350px;
+  height: 1235px;
   width: 100%;
 }
 
@@ -15,27 +16,12 @@
   font-weight: normal;
 }
 
-.branchHeight, .branchSpread {
-  position: absolute;
-  left: 1px;
-  border: 2px solid darkgray;
-  border: 2px solid red;
-  width: 48%;
-  margin: 3px auto 3px auto;
-  height: 48%;
-}
-
-.dayTenView {
-  position: absolute;
-  left: 50%;
-  border: 2px solid darkgray;
-  width: 49%;
-  margin: 3px auto 3px auto;
-  height: 95%;
-}
 
 
-.branchHeightName, .branchSpreadName, .dayTenViewName {
+
+
+
+/* .branchHeightName, .branchSpreadName, .dayTenViewName {
   background-color: lightgrey;
   height: 36px;
   margin: 3px 2px 3px 2px;
@@ -79,4 +65,4 @@
 
 .dayTenViewPlot {
   height: 95%;
-}
+} */

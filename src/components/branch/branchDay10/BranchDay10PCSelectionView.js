@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ForceGraph3D } from 'react-force-graph';
-import * as THREE from 'three';
-import styles from '../../../styles/branch/branchDay10/BranchDay10PCView.module.css';
-import PointCloud from './PointCloud';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import styles from '../../../styles/branch/branchDay10/BranchDay10PCSelectionView.module.css';
 import BranchDay10PCView from './BranchDay10PCView';
+import BranchDay10RadarCharts from './BranchDay10RadarCharts';
 
 const BranchDay10PCSelectionView = ( {chartsBranchDataSample} ) => {
 
@@ -18,29 +14,26 @@ const BranchDay10PCSelectionView = ( {chartsBranchDataSample} ) => {
   };
 
   return (
-    <div className={styles.dayTenPCPlot}>
-      <div>
-        {/* <label htmlFor="branch-select">Choose a branch based on index:</label> */}
-        <select id="branch-select"
-                value={selectedBranchOption}
-                onChange={handleChange} 
-                style={{ width: '100%', height: '40px' , marginTop: '5px', marginBottom: '5px' }}
-        >
-          <option value="" disabled>Select a branch</option>
-          {branchIndexArray.map((branchIndex) => (
-            <option key={branchIndex} value={branchIndex}>
-              branch_{branchIndex}
-            </option>
-          ))}
-        </select>
-        <BranchDay10PCView 
-          chartsBranchDataSample={chartsBranchDataSample}
-          branchIndex={selectedBranchOption} />
-
-        {/* {selectedBranchOption && ( <p>You have selected: {selectedBranchOption}</p>)} */}
-      </div>
-
-
+    <div>
+      <select id="branch-select"
+              value={selectedBranchOption}
+              onChange={handleChange} 
+              style={{ width: '100%', height: '50px' , 
+                      marginTop: '5px', marginBottom: '5px', 
+                      fontSize: 18}} >
+        <option value="" disabled>Select a branch</option>
+        {branchIndexArray.map((branchIndex) => (
+          <option key={branchIndex} value={branchIndex}>
+            branch_{branchIndex}
+          </option>
+        ))}
+      </select>
+      <BranchDay10PCView 
+        chartsBranchDataSample={chartsBranchDataSample}
+        branchIndex={selectedBranchOption} />
+      <BranchDay10RadarCharts 
+        chartsBranchDataSample={chartsBranchDataSample}
+        branchIndex={selectedBranchOption} />
     </div>
   );
 };

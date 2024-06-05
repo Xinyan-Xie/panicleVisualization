@@ -2,7 +2,7 @@
   position: relative;
   border: 2px solid darkgray;
   /* float: left; */
-  height: 1350px;
+  height: 1235px;
   width: 100%;
   }
 
@@ -22,7 +22,7 @@
   /* border: 2px solid red; */
   width: 98%;
   margin: 3px auto 3px auto;
-  height: 48%;
+  height: 600px;
   overflow: auto;
 }
 
@@ -49,7 +49,7 @@
 .segmentIndividual {
   position: absolute;
   left: 18.5%;
-  border: 2px solid darkgray;
+  border: 1px solid darkgray;
   /* border: 2px solid red; */
   width: 60%;
   margin: 3px auto 3px auto;
@@ -71,7 +71,7 @@
   position: absolute;
   /* left: 68%; */
   right: 0.5%;
-  border: 2px solid darkgray;
+  border: 1px solid darkgray;
   /* border: 2px solid red; */
   width: 20%;
   margin: 3px auto 3px auto;
@@ -83,7 +83,7 @@
   border: 2px solid darkgray;
   width: 98%;
   margin: 3px auto 3px auto;
-  height: 316px;
+  height: 280px;
 }
 
 .segmentGenoDiff {
@@ -91,7 +91,7 @@
   border: 2px solid darkgray;
   width: 98%;
   margin: 3px auto 3px auto;
-  height: 316px;
+  height: 280px;
 }
 
 
@@ -112,7 +112,7 @@
   bottom: 0px;
   transform: rotate(90deg);
   transform-origin: bottom right;
-  width: 310px;
+  width: 275.5px;
 }
   
   /* .segmentView::-webkit-scrollbar, .branchView::-webkit-scrollbar {

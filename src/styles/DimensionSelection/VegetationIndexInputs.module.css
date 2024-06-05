@@ -1,0 +1,45 @@
+/* src/styles/VegetationIndexInputs.module.css */
+
+
+.vegIndexcontainer {
+    position: relative;
+    border: 2px solid darkgray;
+    height: 90px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 400px; */
+  }
+
+  .vegIndexcontainerLabel {
+    margin-top: 8px;
+    /* border: 2px solid red; */
+    position: absolute;
+    left: 10px;
+    top: 5px;
+  }
+
+  .inputGroup {
+    position: absolute;
+    right: 2px;
+    top: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+
+  .inputGroup div {
+    position: relative;
+    margin: 0 5px;
+    flex: 1; /* Make each input take an equal amount of space */
+    /* border: 2px solid red; */
+    /* border-radius: 20px; */
+  }
+
+  input[type="text"] {
+    border-radius: 6px;
+    width: 50px;
+    padding: 5px;
+  }
+  

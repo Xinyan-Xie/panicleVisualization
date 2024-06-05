@@ -5,26 +5,30 @@ import SegementIndividualRadarLabel from './SegementIndividualRadarLabel';
 import SegementTimeDiff from './SegementTimeDiff';
 import SegementGenoDiff from './SegementGenoDiff';
 import SegementTrtDiff from './SegementTrtDiff';
-
+import { evaluate } from 'mathjs';
 
 // Function to calculate the user-defined vegetation index
-function calculateVegetationIndex(data) {
-  // Placeholder function for your vegetation index calculation
-  return 0.5; // Example static value, adjust based on your actual calculation
+function calculateVegetationIndex(equation, data) {
+  const { colAvgR: R, colAvgG: G, colAvgB: B } = data.panicle;
+  try {
+    return evaluate(equation, { R, G, B });
+  } catch (error) {
+    console.error('Error evaluating equation:', error);
+    return 0;
+  }
 }
 
 // Function to transform JSON data into a suitable format for the RadarChartComponent
-function transformDataForRadarChart(jsonData) {
+function transformDataForRadarChart(jsonData, equations) {
   const dataForChart = [
-    {axis: "Height", value: jsonData.panicle.height / 300,},
-    {axis: "Volume", value: jsonData.panicle.volume / 10000, },
-    {axis: "Spread", value: jsonData.panicle.maxSpreadVal / 50, },
-    // value: Object.keys(jsonData.branch).length / 20,
-    {axis: "Branches", value: jsonData.panicle.noTopSeeds / 20, },
-    {axis: "Avg Red", value: jsonData.panicle.colAvgR, },
-    {axis: "Avg Green", value: jsonData.panicle.colAvgG, },
-    {axis: "Avg Blue", value: jsonData.panicle.colAvgB, },
-    {axis: "Vegetation Index", value: calculateVegetationIndex(jsonData), },
+    {axis: 'Height', value: jsonData.panicle.height / 300 },
+    {axis: 'Volume', value: jsonData.panicle.volume / 10000 },
+    {axis: 'Spread', value: jsonData.panicle.maxSpreadVal / 50 },
+    {axis: 'Branches', value: jsonData.panicle.noTopSeeds / 20 },
+    {axis: 'Vegetation Index 1', value: calculateVegetationIndex(equations.equation1, jsonData) },
+    {axis: 'Vegetation Index 2', value: calculateVegetationIndex(equations.equation2, jsonData) },
+    {axis: 'Vegetation Index 3', value: calculateVegetationIndex(equations.equation3, jsonData) },
+    {axis: 'Vegetation Index 4', value: calculateVegetationIndex(equations.equation4, jsonData) },
   ];
   return [dataForChart]; // RadarChart expects an array of these data arrays
 }
@@ -32,24 +36,20 @@ function transformDataForRadarChart(jsonData) {
 // Function to transform JSON data into a suitable format for the RadarChartComponent
 function transformDataForNone() {
   const dataForChart = [
-    {axis: "Height", value: 0,},
-    {axis: "Volume", value: 0, },
-    {axis: "Spread", value: 0, },
-    // value: Object.keys(jsonData.branch).length / 20,
-    {axis: "Branches", value: 0, },
-    {axis: "Avg Red", value: 0, },
-    {axis: "Avg Green", value: 0, },
-    {axis: "Avg Blue", value: 0, },
-    {axis: "Vegetation Index", value: 0, },
+    { axis: 'Height', value: 0 },
+    { axis: 'Volume', value: 0 },
+    { axis: 'Spread', value: 0 },
+    { axis: 'Branches', value: 0 },
+    { axis: 'Vegetation Index 1', value: 0 },
+    { axis: 'Vegetation Index 2', value: 0 },
+    { axis: 'Vegetation Index 3', value: 0 },
+    { axis: 'Vegetation Index 4', value: 0 },
   ];
   return [dataForChart]; // RadarChart expects an array of these data arrays
 }
 
-
-const SegmentViewMap = ({ dataMaps }) => {
-  
+const SegmentViewMap = ({ dataMaps, equations }) => {
   const [chartsData, setChartsData] = useState(dataMaps);
-  
   useEffect(() => {
     setChartsData(prevData => ({...prevData, 
                                 numIndex: dataMaps["numIndex"],
@@ -63,59 +63,57 @@ const SegmentViewMap = ({ dataMaps }) => {
             fetch(`/data/summaryFeature/${sampleDayObject.link}`)
             .then(response => response.json())
             .then(data => {
-              let radarData = transformDataForRadarChart(data);
+              let radarData = transformDataForRadarChart(data, equations);
               setChartsData(prevData => ({
                 ...prevData,
                 [sampleKey]: {
-                              ...prevData[sampleKey],
-                            [dayKey]: {
-                                        // ...prevData[sampleKey][dayKey],
-                                        "genoIndex": sampleDayObject["genoIndex"],
-                                        "treatIndex": sampleDayObject["treatIndex"],
-                                        "sampleIndex": sampleDayObject["sampleIndex"],
-                                        "dayIndex": sampleDayObject["dayIndex"],
-                                        "color": sampleDayObject["color"],
-                                        "data": radarData}
-                              }
+                  ...prevData[sampleKey],
+                  [dayKey]: {
+                    "genoIndex": sampleDayObject["genoIndex"],
+                    "treatIndex": sampleDayObject["treatIndex"],
+                    "sampleIndex": sampleDayObject["sampleIndex"],
+                    "dayIndex": sampleDayObject["dayIndex"],
+                    "color": sampleDayObject["color"],
+                    "data": radarData
+                  }
+                }
               }));
             })
             .catch(error => console.error('Error fetching data:', error));
           } else {
-            let radarData = transformDataForNone();
+            let radarData = transformDataForNone( equations );
             setChartsData(prevData => ({
               ...prevData, 
               [sampleKey]: {
-                            ...prevData[sampleKey], 
-                            [dayKey]: {
-                              "genoIndex": sampleDayObject["genoIndex"],
-                              "treatIndex": sampleDayObject["treatIndex"],
-                              "sampleIndex": sampleDayObject["sampleIndex"],
-                              "dayIndex": sampleDayObject["dayIndex"],
-                              "color": sampleDayObject["color"],
-                              "data": radarData
-              }}
+                ...prevData[sampleKey], 
+                [dayKey]: {
+                  "genoIndex": sampleDayObject["genoIndex"],
+                  "treatIndex": sampleDayObject["treatIndex"],
+                  "sampleIndex": sampleDayObject["sampleIndex"],
+                  "dayIndex": sampleDayObject["dayIndex"],
+                  "color": sampleDayObject["color"],
+                  "data": radarData
+                }
+              }
             }));
           }
         });
       }
     });
-  }, [dataMaps]);
-  // }, []);   
+  }, [dataMaps, equations]); 
+
+
   return (
     <div className={styles.segmentView}>
 
       <h2 className={styles.segmentTitle}>Segment View</h2>
-
       <div className={styles.segmentIndividualTimeDiff}>
-
         <div className={styles.segmentIndividualLabel}>
           <div className={styles.segmentIndividualLabelBlankName}> 
             Label  
           </div>
           <SegementIndividualRadarLabel chartsData={chartsData} />          
         </div>
-        
-        
         
         <div className={styles.segmentIndividual}>
           <div className={styles.segmentIndividualName}> 

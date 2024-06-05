@@ -2,9 +2,10 @@ import React from 'react';
 import styles from '../../styles/DimensionSelection/DimensionSelection.module.css';
 import CheckboxTable from './CheckboxTable';
 import { useState } from 'react';
-import DimensionColorMapping from '../unused/DimensionColorMapping';
+import DimensionColorMapping from './DimensionColorMapping';
+import VegetationIndexInputs from './VegetationIndexInputs';
 
-const DimensionSelection = ({ onFetchChartData }) => {
+const DimensionSelection = ({ onFetchChartData, equations, onEquationChange }) => {
   
   const [selectedOptions, setSelectedOptions] = useState({
     genotype: [],
@@ -21,8 +22,15 @@ const DimensionSelection = ({ onFetchChartData }) => {
         <CheckboxTable onFetchChartData={onFetchChartData} />
       </div>
       <div>
+        <VegetationIndexInputs
+          equations={equations}
+          onEquationChange={onEquationChange}
+        />
+      </div>
+      <div>
         <DimensionColorMapping/>
       </div>
+      
     </div>
   );
 };

@@ -13,7 +13,7 @@ const PointCloud = ({ points }) => {
       positions.push(point.x, point.y, point.z);
       color.set(point.color);
       colors.push(color.r, color.g, color.b);
-      colors.push(point.r, point.g, point.b);
+      // colors.push(point.r, point.g, point.b);
     });
 
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));

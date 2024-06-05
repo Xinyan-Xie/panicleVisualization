@@ -1,6 +1,6 @@
 .segmentTimeDiffChartsGroup {
     /* height: 93%; */
-    width: 98%;
+    width: 98.5%;
     /* margin: auto; */
     position: relative;
     left: 1%;
@@ -8,10 +8,14 @@
   }
 
 .segmentTimeDiffChartsGroupEach {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
     /* float: left; */
     left: 0.5%;
     width: 97%;
     aspect-ratio: 1 / 1;
-    border: 1px solid lightgrey;
+    border: 0.5px solid lightgrey;
     /* border: 1px solid red; */
+    position: relative;
   }

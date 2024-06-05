@@ -1,0 +1,36 @@
+.dayTenView {
+  position: absolute;
+  left: 35.5%;
+  top: 48px;
+  width: 64%;
+  height: 1175px;
+  border: 1px solid darkgray;
+  margin: 3px auto 3px auto;
+}
+
+.dayTenViewName {
+    background-color: lightgrey;
+    height: 36px;
+    margin: 3px 2px 3px 2px;
+    text-align: center; 
+    font-size: 24px;
+    font-weight: normal;
+  }
+
+  .dayTenOutline {
+    /* border: 2px solid red; */
+    height: 1120px;
+    display: flex;              /* Align children in a row */
+    overflow-x: auto;           /* Enable horizontal scrolling */
+    white-space: nowrap;        /* Ensure the children don't wrap to the next line */
+    /* padding: 5px;    */
+    /* margin: auto; */
+    /* margin-right: 10px; */
+  }
+  
+  .DayTenViewIndividual {
+    /* border: 1px solid darkgray; */
+    height: 1120px;
+    width: 200px;
+    margin: 10px;
+  }

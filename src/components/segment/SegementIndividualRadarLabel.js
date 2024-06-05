@@ -9,39 +9,44 @@ const SegementIndividualRadarLabel = ({ chartsData }) => {
   useEffect(() => {
     Object.keys(chartsData).forEach(sampleKey  => {
       if ((sampleKey !== 'numIndex') && (sampleKey !== 'genoMap') && (sampleKey !== 'trtMap')) {
-        const cellIndex = chartsData[sampleKey]["4D"]["sampleIndex"];
-        const div = gridRefs.current[cellIndex].current;
-        let genoPart = sampleKey.split(' x ')[0];
-        let trtPart = sampleKey.split(' x ')[1];
-        if (div) {
-          const newDiv = document.createElement('div');
-          newDiv.textContent = genoPart;
-          div.appendChild(newDiv);
-
-
-  //         div.innerHTML = `
-  //           <div style="height: 55px; width: 90%; 
-  //                       text-align: center;
-  //                       font-size: 18px;
-  //                       font-weight: bold;
-
-  //                       // background-color: lightgrey;
-  //                       // border: 1px solid black;
-  // ">
-  //             <div style="text-align: center;">${genoPart}</div>
-  //             <div style="text-align: center;">${trtPart}</div>
-  //           <div>`;
-        
-  //         // Center the text within the parent div
-  //         div.style.display = 'flex';
-  //         div.style.flexDirection = 'column';
-  //         div.style.alignItems = 'center';
-  //         div.style.justifyContent = 'center';
-  //         div.style.height = '100%'; // Ensure the parent div has a defined height
+        if ((chartsData[sampleKey]["4D"]) && 
+            (chartsData[sampleKey]["7D"]) && 
+            (chartsData[sampleKey]["10D"])) {
+          const cellIndex = chartsData[sampleKey]["4D"]["sampleIndex"];
+          const div = gridRefs.current[cellIndex].current;
+          let genoPart = sampleKey.split(' x ')[0];
+          let trtPart = sampleKey.split(' x ')[1];
+          // let textColor = chartsData[sampleKey]["4D"]["color"];
+          if (div) {
+            // const newDiv = document.createElement('div');
+            // newDiv.textContent = genoPart;
+            // div.appendChild(newDiv);
+            div.innerHTML = `
+              <div style="height: 50px; width: 90%; 
+                          text-align: center;
+                          font-size: 18px;
+                          font-weight: bold;
+                          border-radius: 10px;
+                          color: ${chartsData[sampleKey]["10D"]["color"]};
+                          border: 1px solid ${chartsData[sampleKey]["4D"]["color"]};
+              ">
+                <div style="text-align: center;">${genoPart}</div>
+                <div style="text-align: center;">${trtPart}</div>
+              <div>`;
+          
+            // Center the text within the parent div
+            div.style.display = 'flex';
+            div.style.flexDirection = 'column';
+            div.style.alignItems = 'center';
+            div.style.justifyContent = 'center';
+            div.style.height = '100%'; // Ensure the parent div has a defined height
+          }
         }
       }
     });
-  }, [chartsData]);   
+  // }, [chartsData]);   
+  // }, []);
+  });
   
   return (
     <div className={styles.segmentIndividualLabelsGroup}>

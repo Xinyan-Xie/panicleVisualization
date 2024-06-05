@@ -34,11 +34,15 @@
   }
 
 .segmentGenoDiffChartsGroupEach {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
     float: left;
     width: 32.5%;
     aspect-ratio: 1 / 1;
-    border: 1px solid lightgrey;
+    border: 0.5px solid lightgrey;
     /* border: 1px solid red; */
+    position: relative;
   }
 
 

@@ -1,55 +1,131 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ForceGraph3D } from 'react-force-graph';
-import * as THREE from 'three';
-import SpriteText from 'three-spritetext';
-import BranchDay10PCSelectionView from './BranchDay10PCSelectionView';
 import styles from '../../../styles/branch/branchDay10/BranchDay10.module.css';
+import BranchDay10ForceGraph3D from './BranchDay10ForceGraph3D';
+import React, { useEffect, useState } from 'react';
 
-const BranchDay10 = ( {chartsBranchData} ) => {
+// Function to transform JSON data into a suitable format for the RadarChartComponent
+function transformDataForDay10Graph(jsonData, sampleDayObject) {
+  let nodes = [];
+  let links = [];
+  let lastBranchId = 'branch_0_end';
+
+  let basePoint = {
+    "id": "plantBasePoint", 
+    "name": "plantBasePoint",
+    "color": "darkgrey",
+    "x": (jsonData["panicle"]["basePos"][0] - 10) * 1.5,
+    "y": (0 - 100) * 1.5,
+    "z": (jsonData["panicle"]["basePos"][1]) * 1.5};
+  nodes.push(basePoint);
+
+
+  for (let i = 0; i < jsonData.panicle.noTopSeeds; i++) {
+    let branchTopId = 'branch_' + i;
+    let eachBranchTop = {
+      "id": branchTopId + '_top', 
+      "name": branchTopId,
+      "color": sampleDayObject["color"],
+      "x": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][0] - 10) * 1.5,
+      "y": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][2] - 100) * 1.5,
+      "z": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][1])  * 1.5};
+    nodes.push(eachBranchTop);
+    let branchEndId = 'branch_' + i;
+    let eachBranchEnd = {
+      "id": branchEndId + '_end', 
+      "name": branchEndId,
+      "color": sampleDayObject["color"],
+      "x": (jsonData["branch10Day"]["branchInd_" + i]["branchLowerPos"][0] - 10) * 1.5,
+      "y": (jsonData["branch10Day"]["branchInd_" + i]["branchLowerPos"][2] - 100) *1.5,
+      "z": (jsonData["branch10Day"]["branchInd_" + i]["branchLowerPos"][1]) * 1.5};
+    nodes.push(eachBranchEnd);
+    // console.log("eachBranchTop, ", eachBranchTop)
+    let branch = {
+      "source": branchEndId + '_top',
+      "target": branchEndId + '_end',
+      "color": "darkgrey"
+    }
+    links.push(branch);
+
+    let stem;
+    if (i === 0) {
+      stem = {
+        "source": lastBranchId,
+        "target": 'plantBasePoint',
+        "color": "darkgrey"
+      }
+    } else {
+      stem = {
+        "source": lastBranchId,
+        "target": branchEndId + '_end',
+        "color": "darkgrey"
+      }
+    }
+    links.push(stem);
+    lastBranchId = branchEndId + '_end';
+  }
+
+  let day10Graph = { nodes, links };
+  return day10Graph;
+}
+
+// Function to transform JSON data into a suitable format for the RadarChartComponent
+function transformDataForDay10Radar(jsonData, sampleDayObject) {
+  let radarData  = {};
+  for (let i = 0; i < jsonData.panicle.noTopSeeds; i++) {
+    let branchTopId = 'branch_' + i;
+    radarData[branchTopId] = [[
+      {axis: "volumeBranch", value: jsonData["branch10Day"]["branchInd_" + i]["volumeBranch"] / 10000,},
+      {axis: "lengthBranch", value: jsonData["branch10Day"]["branchInd_" + i]["lengthBranch"] / 300, },
+      {axis: "angleBranch", value: jsonData["branch10Day"]["branchInd_" + i]["angleBranch"] / 90, },
+      {axis: "noSeed", value: jsonData.panicle.noTopSeeds / 20, },
+      {axis: "branchAverageR", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageR"] / 255, },
+      {axis: "branchAverageG", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageG"] / 255, },
+      {axis: "branchAverageB", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageB"] / 255, },
+      {axis: "branchAverageBB", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageB"] / 255, },
+    ]]
+  }
+  return radarData;
+}
+
+const BranchDay10 = ({ dataMaps }) => {
+
+  const [chartsBranchData, setChartsBranchData] = useState({});  
+  useEffect(() => {
+    Object.entries(dataMaps).forEach(([sampleKey, sampleObject])  => {
+      if ((sampleKey !== 'numIndex') && (sampleKey !== 'genoMap') && (sampleKey !== 'trtMap')) {
+        Object.entries(sampleObject).forEach(([dayKey, sampleDayObject])  => {
+          if (dayKey === "10D" && sampleDayObject.link) {
+            fetch(`/data/summaryFeature/${sampleDayObject.link}`)
+            .then(response => response.json())
+            .then(data => {
+
+              let day10GraphData = transformDataForDay10Graph(data, sampleDayObject);
+              let day10RadarData = transformDataForDay10Radar(data, sampleDayObject);
+              // setChartsBranchData(day10GraphData);
+              setChartsBranchData(prevData => ({
+                ...prevData, 
+                [sampleKey]: {...dataMaps[sampleKey]["10D"],
+                              "data": day10GraphData,
+                              "radarData": day10RadarData,
+                              "numBranches": data["panicle"]["noTopSeeds"]
+                            }
+              }));
+            })
+            .catch(error => console.error('Error fetching data:', error));
+          } 
+        });
+      }
+    });
+  }, [dataMaps]);
+  // });
+
+
 
   return (
-    <div className={styles.dayTenOutline}>
-
-      {Object.keys(chartsBranchData).map((sampleKey, index)  => {
-        return (
-          <div key={index} className={styles.DayTenViewIndividual}>
-            <div className={styles.DayTenGraph}>
-              <ForceGraph3D
-                graphData={chartsBranchData[sampleKey]["data"]}
-                nodeAutoColorBy="color"
-                linkDirectionalParticles="value"
-                linkDirectionalParticleWidth={2}
-                width={200}
-                height={500}
-                nodeThreeObject={node => {
-                  const material = new THREE.MeshBasicMaterial({ color: node.color });
-                  const geometry = new THREE.SphereGeometry(3); // Adjust size here
-                  return new THREE.Mesh(geometry, material);
-                }}
-                linkMaterial={link => {
-                  return new THREE.LineBasicMaterial({
-                    color: link.color || 'lightgreen',
-                    linewidth: 2 // Adjust link width here
-                  });
-                }}
-                dagLevelDistance={null}
-                enableNodeDrag={false} // Disables node dragging
-                backgroundColor="white"  // Set background color to white
-                cooldownTicks={0} // Stop simulation immediately
-                onEngineTick={() => null} // Override physics engine ticks
-                onEngineStop={() => console.log('Simulation stopped')} // Notification on simulation stop
-              />         
-            </div>
-            <BranchDay10PCSelectionView chartsBranchDataSample={chartsBranchData[sampleKey]} />
-          </div>
-        );
-      })}
+    <div className={styles.dayTenView}>
+      <div className={styles.dayTenViewName}> Day 10 View </div>
+      <BranchDay10ForceGraph3D chartsBranchData={chartsBranchData}/>
     </div>
-    
   );
 };
 
 export default BranchDay10;
-
-
-
