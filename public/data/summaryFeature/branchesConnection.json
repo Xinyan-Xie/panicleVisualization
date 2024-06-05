@@ -1,0 +1,101 @@
+{
+    "HC2 x CONTROL": {
+        "numOfBranchesDay10": 12,
+        "4D": [],
+        "7D": [
+            3,
+            7
+        ],
+        "10D": []
+    },
+    "HC2 x HDNT": {
+        "numOfBranchesDay10": 12,
+        "4D": [
+            6,
+            10
+        ],
+        "7D": [
+            10
+        ],
+        "10D": []
+    },
+    "HC5 x CONTROL": {
+        "numOfBranchesDay10": 10,
+        "4D": [
+            0,
+            3
+        ],
+        "7D": [
+            0,
+            3
+        ],
+        "10D": []
+    },
+    "HC5 x HDNT": {
+        "numOfBranchesDay10": 12,
+        "4D": [
+            2,
+            6
+        ],
+        "7D": [
+            6
+        ],
+        "10D": []
+    },
+    "HO1 x CONTROL": {
+        "numOfBranchesDay10": 12,
+        "4D": [],
+        "7D": [],
+        "10D": []
+    },
+    "HO1 x HDNT": {
+        "numOfBranchesDay10": 12,
+        "4D": [
+            0,
+            1,
+            6
+        ],
+        "7D": [
+            0,
+            1,
+            6
+        ],
+        "10D": []
+    },
+    "HO2 x CONTROL": {
+        "numOfBranchesDay10": 11,
+        "4D": [
+            0
+        ],
+        "7D": [],
+        "10D": []
+    },
+    "HO2 x HDNT": {
+        "numOfBranchesDay10": 12,
+        "4D": [],
+        "7D": [],
+        "10D": []
+    },
+    "KIT x CONTROL": {
+        "numOfBranchesDay10": 10,
+        "4D": [
+            1,
+            7
+        ],
+        "7D": [],
+        "10D": []
+    },
+    "KIT x HDNT": {
+        "numOfBranchesDay10": 12,
+        "4D": [
+            1,
+            3,
+            4,
+            5
+        ],
+        "7D": [
+            1
+        ],
+        "10D": []
+    }
+}
