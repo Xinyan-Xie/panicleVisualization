@@ -35,8 +35,9 @@ const SegementGenoDiffLabel = ({ chartsData }) => {
         }
       }
     });
-  }
-);   
+  }, [chartsData]); 
+  // });
+     
   
   return (
     <div className={styles.segmentIndividualLabelsGroup}>

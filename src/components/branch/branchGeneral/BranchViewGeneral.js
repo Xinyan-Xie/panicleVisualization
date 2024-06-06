@@ -26,7 +26,6 @@ const BranchViewGeneral = ({ dataMaps }) => {
     const fetchData = async () => {
       try {
         const fetchPromises  = [];
-
         for (const [sampleKey, sampleObject] of Object.entries(dataMaps)) {
         // Object.entries(dataMaps).forEach(([sampleKey, sampleObject])  => {
           if ((sampleKey !== 'numIndex') && (sampleKey !== 'genoMap') && (sampleKey !== 'trtMap')) {

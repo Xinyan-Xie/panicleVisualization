@@ -1,6 +1,6 @@
 .dayTenOutline {
   /* border: 2px solid red; */
-  height: 1120px;
+  /* height: 1120px; */
   display: flex;              /* Align children in a row */
   overflow-x: auto;           /* Enable horizontal scrolling */
   white-space: nowrap;        /* Ensure the children don't wrap to the next line */
@@ -11,7 +11,7 @@
 
 .DayTenViewIndividual {
   /* border: 1px solid darkgray; */
-  height: 1120px;
+  /* height: 1120px; */
   width: 200px;
   margin: 10px;
 }

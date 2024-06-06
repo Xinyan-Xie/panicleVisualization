@@ -44,9 +44,9 @@ const SegementIndividualRadarLabel = ({ chartsData }) => {
         }
       }
     });
-  // }, [chartsData]);   
+  }, [chartsData]);   
   // }, []);
-  });
+  // });
   
   return (
     <div className={styles.segmentIndividualLabelsGroup}>

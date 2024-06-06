@@ -158,14 +158,14 @@ function HeightPlotFunc(container, branchGeneralDataSample, colors, width, heigh
       d3.select(this).style('opacity', 0.7);
       tooltip.transition().duration(200).style("opacity", 0.9);
       tooltip.html(d.value.toFixed(2))
-        .style("left", "10px")
+        .style("left", "3px")
         .style("top", "10px");
         // .style("left", `${event.pageX + 10}px`)
         // .style("top", `${event.pageY - 28}px`);
       })
       .on('mousemove', function (event) {
       tooltip
-        .style("left", "10px")
+        .style("left", "3px")
         .style("top", "10px");
         // .style("left", `${event.pageX + 10}px`)
         // .style("top", `${event.pageY - 28}px`);
@@ -208,7 +208,7 @@ const HeightPlot = ({ branchGeneralData }) => {
 
     const div = gridRefs.current[0];
     if (div) {
-      VerticalRuler(div.current, 80, 480);
+      VerticalRuler(div.current, 70, 450);
     }
 
     Object.keys(branchGeneralData).forEach(sampleKey => {
@@ -216,7 +216,7 @@ const HeightPlot = ({ branchGeneralData }) => {
       const div = gridRefs.current[cellIndex];
       if (div) {
         const branchGeneralDataSample = branchGeneralData[sampleKey];
-        HeightPlotFunc(div.current, branchGeneralDataSample, branchGeneralData[sampleKey]["colors"], 80, 480);
+        HeightPlotFunc(div.current, branchGeneralDataSample, branchGeneralData[sampleKey]["colors"], 70, 450);
       }
     });
   }, [branchGeneralData]);

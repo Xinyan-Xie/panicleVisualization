@@ -8,7 +8,6 @@ const SegementIndividualRadar = ({ chartsData }) => {
   const gridRefs = useRef([]);
   gridRefs.current = Array(chartsData["numIndex"]  * 3).fill().map(() => React.createRef());
   useEffect(() => {
-    console.log("***************")
     Object.keys(chartsData).forEach(sampleKey  => {
       if ((sampleKey !== 'numIndex') && (sampleKey !== 'genoMap') && (sampleKey !== 'trtMap')) {
         Object.keys(chartsData[sampleKey]).forEach(dayKey  => {

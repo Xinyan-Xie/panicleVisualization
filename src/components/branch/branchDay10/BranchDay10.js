@@ -1,6 +1,7 @@
-import styles from '../../../styles/branch/branchDay10/BranchDay10.module.css';
-import BranchDay10ForceGraph3D from './BranchDay10ForceGraph3D';
+import { evaluate } from 'mathjs';
 import React, { useEffect, useState } from 'react';
+import BranchDay10ForceGraph3D from './BranchDay10ForceGraph3D';
+import styles from '../../../styles/branch/branchDay10/BranchDay10.module.css';
 
 // Function to transform JSON data into a suitable format for the RadarChartComponent
 function transformDataForDay10Graph(jsonData, sampleDayObject) {
@@ -67,8 +68,19 @@ function transformDataForDay10Graph(jsonData, sampleDayObject) {
   return day10Graph;
 }
 
+// Function to calculate the user-defined vegetation index
+function calculateVegetationIndex(equation, data) {
+  const { branchAverageR: R, branchAverageG: G, branchAverageB: B } = data;
+  try {
+    return evaluate(equation, { R, G, B });
+  } catch (error) {
+    console.error('Error evaluating equation:', error);
+    return 0;
+  }
+}
+
 // Function to transform JSON data into a suitable format for the RadarChartComponent
-function transformDataForDay10Radar(jsonData, sampleDayObject) {
+function transformDataForDay10Radar(jsonData, sampleDayObject, equations) {
   let radarData  = {};
   for (let i = 0; i < jsonData.panicle.noTopSeeds; i++) {
     let branchTopId = 'branch_' + i;
@@ -77,16 +89,20 @@ function transformDataForDay10Radar(jsonData, sampleDayObject) {
       {axis: "lengthBranch", value: jsonData["branch10Day"]["branchInd_" + i]["lengthBranch"] / 300, },
       {axis: "angleBranch", value: jsonData["branch10Day"]["branchInd_" + i]["angleBranch"] / 90, },
       {axis: "noSeed", value: jsonData.panicle.noTopSeeds / 20, },
-      {axis: "branchAverageR", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageR"] / 255, },
-      {axis: "branchAverageG", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageG"] / 255, },
-      {axis: "branchAverageB", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageB"] / 255, },
-      {axis: "branchAverageBB", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageB"] / 255, },
+      {axis: "branchAverageR", value: calculateVegetationIndex(equations.equation1, jsonData["branch10Day"]["branchInd_" + i]) / 255, },
+      {axis: "branchAverageG", value: calculateVegetationIndex(equations.equation2, jsonData["branch10Day"]["branchInd_" + i]) / 255, },
+      {axis: "branchAverageB", value: calculateVegetationIndex(equations.equation3, jsonData["branch10Day"]["branchInd_" + i]) / 255, },
+      {axis: "branchAverageBB",value: calculateVegetationIndex(equations.equation4, jsonData["branch10Day"]["branchInd_" + i]) / 255, },
+      // {axis: "branchAverageR", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageR"] / 255, },
+      // {axis: "branchAverageG", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageG"] / 255, },
+      // {axis: "branchAverageB", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageB"] / 255, },
+      // {axis: "branchAverageBB", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageB"] / 255, },
     ]]
   }
   return radarData;
 }
 
-const BranchDay10 = ({ dataMaps }) => {
+const BranchDay10 = ({ dataMaps, equations }) => {
 
   const [chartsBranchData, setChartsBranchData] = useState({});  
   useEffect(() => {
@@ -99,7 +115,7 @@ const BranchDay10 = ({ dataMaps }) => {
             .then(data => {
 
               let day10GraphData = transformDataForDay10Graph(data, sampleDayObject);
-              let day10RadarData = transformDataForDay10Radar(data, sampleDayObject);
+              let day10RadarData = transformDataForDay10Radar(data, sampleDayObject, equations);
               // setChartsBranchData(day10GraphData);
               setChartsBranchData(prevData => ({
                 ...prevData, 
@@ -115,7 +131,7 @@ const BranchDay10 = ({ dataMaps }) => {
         });
       }
     });
-  }, [dataMaps]);
+  }, [dataMaps, equations]);
   // });
 
 

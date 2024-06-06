@@ -1,0 +1,17 @@
+.partsView {
+    position: relative;
+    border: 2px solid darkgray;
+    /* border: 2px solid red; */
+    margin-top: 3px;
+    float: left;
+    height: 650px;
+    width: 100%;
+  }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; Full viewport height for centering vertically */
+}
+  

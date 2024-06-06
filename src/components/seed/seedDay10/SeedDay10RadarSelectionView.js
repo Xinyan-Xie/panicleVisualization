@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SeedDay10RadarCharts from './SeedDay10RadarCharts';
 
-const SeedDay10RadarSelectionView = ( {chartsBranchDataSample, branchIndex} ) => {
+const SeedDay10RadarSelectionView = ( {chartsBranchDataSample, branchIndex, equations } ) => {
 
   const [selectedSeedOption, setSelectedSeedOption] = useState('');
   const seedIndexArray = Array.from({ length: chartsBranchDataSample["noSeedList"][branchIndex] }, 
@@ -30,7 +30,8 @@ const SeedDay10RadarSelectionView = ( {chartsBranchDataSample, branchIndex} ) =>
       <SeedDay10RadarCharts 
         chartsBranchDataSample={chartsBranchDataSample}
         branchIndex={branchIndex}
-        seedIndex={selectedSeedOption} />
+        seedIndex={selectedSeedOption} 
+        equations={equations} />
     </div>
   );
 };

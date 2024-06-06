@@ -59,8 +59,8 @@ const BranchDay10PCView = ( {chartsBranchDataSample, branchIndex} ) => {
       setPoints(pointsData);
     })
     .catch(error => console.error('Error loading the file', error));
-  // });  
-  }, [chartsBranchDataSample]);
+  });  
+  // }, [chartsBranchDataSample]);
   
 
   return (

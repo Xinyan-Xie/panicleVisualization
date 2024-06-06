@@ -3,7 +3,7 @@ import BranchDay10PCSelectionView from './BranchDay10PCSelectionView';
 import React, { useEffect, useState } from 'react';
 
 
-const SeedDay10 = ({ dataMaps }) => {
+const SeedDay10 = ({ dataMaps, equations }) => {
 
   const [chartsBranchData, setChartsBranchData] = useState({});  
   useEffect(() => {
@@ -39,7 +39,9 @@ const SeedDay10 = ({ dataMaps }) => {
         {Object.keys(chartsBranchData).map((sampleKey, index)  => {
           return (
             <div key={index} className={styles.DayTenViewIndividual}>
-              <BranchDay10PCSelectionView chartsBranchDataSample={chartsBranchData[sampleKey]} />
+              <BranchDay10PCSelectionView 
+                chartsBranchDataSample={chartsBranchData[sampleKey]} 
+                equations={equations} />
             </div>
           );
         })}

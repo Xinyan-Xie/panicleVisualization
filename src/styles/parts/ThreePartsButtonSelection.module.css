@@ -1,0 +1,33 @@
+.buttonView {
+  width: 99%;
+  height: 45px;
+  /* border: 2px solid darkgray; */
+  margin: 3px 0px;
+  display: flex;
+  gap: 3px;
+}
+
+button {
+  width: 33%;
+  height: 45px;
+  cursor: pointer;
+
+  padding: 10px 20px; /* Adjust padding as needed */
+  font-family: 'Arial', sans-serif; /* Change the font family */
+  font-size: 16px; /* Change the font size */
+  font-weight: bold; /* Make the text bold */
+  font-style: italic;
+  color: black; /* Change the text color */
+  text-transform: uppercase;
+  background-color: lightgray; /* Default background color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius */
+}
+
+/* .button:hover {
+  background-color: blueviolet;
+} */
+
+.button.active {
+  background-color: lightgreen;
+}

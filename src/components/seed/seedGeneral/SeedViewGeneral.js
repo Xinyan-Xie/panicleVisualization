@@ -27,7 +27,6 @@ const SeedViewGeneral = ({ dataMaps }) => {
     const fetchData = async () => {
       try {
         const fetchPromises  = [];
-        console.log("dataMaps, ", dataMaps)
         for (const [sampleKey, sampleObject] of Object.entries(dataMaps)) {
         // Object.entries(dataMaps).forEach(([sampleKey, sampleObject])  => {
           if ((sampleKey !== 'numIndex') && (sampleKey !== 'genoMap') && (sampleKey !== 'trtMap')) {

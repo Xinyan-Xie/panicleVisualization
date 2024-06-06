@@ -48,60 +48,71 @@ function transformDataForNone() {
   return [dataForChart]; // RadarChart expects an array of these data arrays
 }
 
+
 const SegmentViewMap = ({ dataMaps, equations }) => {
   const [chartsData, setChartsData] = useState(dataMaps);
+  const [dataFetched, setDataFetched] = useState(false);
   useEffect(() => {
-    setChartsData(prevData => ({...prevData, 
-                                numIndex: dataMaps["numIndex"],
-                                trtMap: dataMaps["trtMap"],
-                                genoMap: dataMaps["genoMap"]}));
-    Object.entries(dataMaps).forEach(([sampleKey, sampleObject])  => {
-      setChartsData(prevData => ({...prevData}));
-      if ((sampleKey !== 'numIndex') && (sampleKey !== 'genoMap') && (sampleKey !== 'trtMap')) {
-        Object.entries(sampleObject).forEach(([dayKey, sampleDayObject])  => {
-          if (sampleDayObject.link) {
-            fetch(`/data/summaryFeature/${sampleDayObject.link}`)
-            .then(response => response.json())
-            .then(data => {
-              let radarData = transformDataForRadarChart(data, equations);
-              setChartsData(prevData => ({
-                ...prevData,
-                [sampleKey]: {
-                  ...prevData[sampleKey],
-                  [dayKey]: {
-                    "genoIndex": sampleDayObject["genoIndex"],
-                    "treatIndex": sampleDayObject["treatIndex"],
-                    "sampleIndex": sampleDayObject["sampleIndex"],
-                    "dayIndex": sampleDayObject["dayIndex"],
-                    "color": sampleDayObject["color"],
-                    "data": radarData
-                  }
-                }
-              }));
-            })
-            .catch(error => console.error('Error fetching data:', error));
-          } else {
-            let radarData = transformDataForNone( equations );
-            setChartsData(prevData => ({
-              ...prevData, 
-              [sampleKey]: {
-                ...prevData[sampleKey], 
-                [dayKey]: {
-                  "genoIndex": sampleDayObject["genoIndex"],
-                  "treatIndex": sampleDayObject["treatIndex"],
-                  "sampleIndex": sampleDayObject["sampleIndex"],
-                  "dayIndex": sampleDayObject["dayIndex"],
-                  "color": sampleDayObject["color"],
-                  "data": radarData
-                }
-              }
-            }));
-          }
-        });
-      }
-    });
-  }, [dataMaps, equations]); 
+    const fetchData = async () => {
+      const updatedData = { ...dataMaps, 
+        numIndex: dataMaps.numIndex, 
+        trtMap: dataMaps.trtMap, 
+        genoMap: dataMaps.genoMap };
 
+      await Promise.all(
+        Object.entries(dataMaps).map(async ([sampleKey, sampleObject]) => {
+          if (sampleKey !== 'numIndex' && sampleKey !== 'genoMap' && sampleKey !== 'trtMap') {
+            await Promise.all(
+              Object.entries(sampleObject).map(async ([dayKey, sampleDayObject]) => {
+                if (sampleDayObject.link) {
+                  try {
+                    const response = await fetch(`/data/summaryFeature/${sampleDayObject.link}`);
+                    const data = await response.json();
+                    const radarData = transformDataForRadarChart(data, equations);
+                    updatedData[sampleKey] = {
+                      ...updatedData[sampleKey],
+                      [dayKey]: {
+                        genoIndex: sampleDayObject.genoIndex,
+                        treatIndex: sampleDayObject.treatIndex,
+                        sampleIndex: sampleDayObject.sampleIndex,
+                        dayIndex: sampleDayObject.dayIndex,
+                        color: sampleDayObject.color,
+                        data: radarData,
+                      },
+                    };
+                  } catch (error) {
+                    console.error('Error fetching data:', error);
+                  }
+                } else {
+                  const radarData = transformDataForNone(equations);
+                  updatedData[sampleKey] = {
+                    ...updatedData[sampleKey],
+                    [dayKey]: {
+                      genoIndex: sampleDayObject.genoIndex,
+                      treatIndex: sampleDayObject.treatIndex,
+                      sampleIndex: sampleDayObject.sampleIndex,
+                      dayIndex: sampleDayObject.dayIndex,
+                      color: sampleDayObject.color,
+                      data: radarData,
+                    },
+                  };
+                }
+              })
+            );
+          }
+        })
+      );
+
+      setChartsData(updatedData);
+      setDataFetched(true);
+    };
+
+    fetchData();
+  }, [dataMaps, equations]);
+
+  if (!dataFetched) {
+    return <div>Loading...</div>; // Or any loading spinner
+  }
 
   return (
     <div className={styles.segmentView}>

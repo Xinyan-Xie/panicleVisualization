@@ -4,7 +4,7 @@
 .vegIndexcontainer {
     position: relative;
     border: 2px solid darkgray;
-    height: 90px;
+    height: 188px;
     margin-top: 5px;
     display: flex;
     flex-direction: column;
@@ -18,28 +18,36 @@
     position: absolute;
     left: 10px;
     top: 5px;
+    font-style: italic;
   }
 
   .inputGroup {
     position: absolute;
-    right: 2px;
+    width: 90%;
+    margin: auto 3px;
+    /* right: 2px; */
     top: 40px;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
+    /* border: 2px solid orange; */
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* margin: 10px 0; */
   }
 
   .inputGroup div {
     position: relative;
-    margin: 0 5px;
-    flex: 1; /* Make each input take an equal amount of space */
+    margin: 5px auto;
+    width: 90%;
+    /* margin: 0 5px; */
+    /* flex: 1; */
     /* border: 2px solid red; */
     /* border-radius: 20px; */
   }
 
   input[type="text"] {
+    position: relative;
+    left: 32%;
     border-radius: 6px;
-    width: 50px;
+    width: 70%;
     padding: 5px;
   }
   

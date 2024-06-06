@@ -3,6 +3,7 @@ import DimensionSelection from './components/DimensionSelection/DimensionSelecti
 import SegmentViewMap from './components/segment/SegmentViewMap';
 import BranchView from './components/branch/BranchView';
 import SeedView from './components/seed/SeedView';
+import PartsView from './components/parts/PartsView'
 import './App.css';
 
 function App() {
@@ -23,14 +24,6 @@ function App() {
   const [dataMaps, setdataMaps] = useState({numIndex: 0, 
                                             genoMap: {count :0}, 
                                             trtMap: {count :0}});
-
-  
-  const [equations, setEquations] = useState({
-    equation1: 'R',
-    equation2: 'G',
-    equation3: 'B',
-    equation4: '(R+G+B)/3',
-  });
 
   const fetchChartData = (filename) => {
    
@@ -87,6 +80,13 @@ function App() {
     });
   };
 
+  const [equations, setEquations] = useState({
+    equation1: 'R',
+    equation2: 'G',
+    equation3: 'B',
+    equation4: '(R+G+B)/3',
+  });
+
   const handleEquationChange = (name, value) => {
     setEquations((prev) => ({ ...prev, [name]: value }));
   };
@@ -99,12 +99,12 @@ function App() {
         onEquationChange={handleEquationChange}/>
       <div>
         <SegmentViewMap dataMaps={dataMaps} equations={equations} />
+        <PartsView dataMaps={dataMaps} equations={equations} />
       </div>
       <div>
-        <BranchView dataMaps={dataMaps}/>
-        <SeedView dataMaps={dataMaps}/>
+        <BranchView dataMaps={dataMaps} equations={equations} />
+        <SeedView dataMaps={dataMaps} equations={equations} />
       </div>
-      
     </div>
   );
 }

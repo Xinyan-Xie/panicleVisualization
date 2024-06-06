@@ -17,7 +17,7 @@ const VegetationIndexInputs = ({ onEquationChange, equations }) => {
   return (
     <div className={styles.vegIndexcontainer}>
       <div className={styles.vegIndexcontainerLabel}>
-        User-defined Vegetation Index
+        User-defined Vegetation Index (R, G, B):
       </div>
       <div className={styles.inputGroup}>
         <div>

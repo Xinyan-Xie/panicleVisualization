@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SeedDay10PCView from './SeedDay10PCView';
 import SeedDay10RadarSelectionView from './SeedDay10RadarSelectionView';
 
-const BranchDay10PCSelectionView = ( {chartsBranchDataSample} ) => {
+const BranchDay10PCSelectionView = ( {chartsBranchDataSample, equations } ) => {
 
   const [selectedBranchOption, setSelectedBranchOption] = useState('');
   const branchIndexArray = Array.from({ length: chartsBranchDataSample["numBranches"] }, (_, index) => index);
@@ -32,7 +32,8 @@ const BranchDay10PCSelectionView = ( {chartsBranchDataSample} ) => {
         branchIndex={selectedBranchOption} />
       <SeedDay10RadarSelectionView 
         chartsBranchDataSample={chartsBranchDataSample} 
-        branchIndex={selectedBranchOption} />
+        branchIndex={selectedBranchOption} 
+        equations={equations} />
     </div>
   );
 };
