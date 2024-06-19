@@ -9,7 +9,6 @@ const PartsViewTimeRadarCharts = ({ partsRadarData }) => {
   gridRefs.current = Array(partsRadarData["genoMap"]["count"] * 2)
                     .fill().map(() => React.createRef());
   useEffect(() => {
-    console.log("****partsRadarData, ", partsRadarData)
     // Object.keys(partsRadarData).forEach(sampleKey  => {
     for (const [sampleKey, sampleObject] of Object.entries(partsRadarData)) {
       if ((sampleKey !== 'numIndex') && (sampleKey !== 'genoMap') && (sampleKey !== 'trtMap')) {
@@ -25,8 +24,6 @@ const PartsViewTimeRadarCharts = ({ partsRadarData }) => {
         if (div) {
           // const partsRadarDataSample = partsRadarData[sampleKey];
           const widthDiv = div.current.clientWidth;
-          console.log("partsRadarData, ", result)
-          console.log("partsRadarColor, ", colors)
           RadarChart(div.current, result, colors, widthDiv, widthDiv);
         }
       }
@@ -36,6 +33,14 @@ const PartsViewTimeRadarCharts = ({ partsRadarData }) => {
 
   return (
     <div className={styles.partsViewRadarChartsGroup}>
+      <div className={styles.partsSubName}> 
+        <div className={styles.partsSubSubName}> 
+          CONTROL
+        </div>
+        <div className={styles.partsSubSubName}> 
+          HDNT
+        </div>
+      </div>
       {gridRefs.current.map((ref, index) => (
         <div key={index} 
           ref={ref} 

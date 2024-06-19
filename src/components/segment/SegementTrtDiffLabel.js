@@ -12,7 +12,7 @@ const SegementTrtDiffLabel = ({ chartsData }) => {
         const div = gridRefs.current[cellIndex].current;
         if (div) {
           div.innerHTML = `
-            <div style="width: 90%;
+            <div style="width: 96%;
                   position: relative;
                   // top: 20%;
                   left: 5%;
@@ -43,7 +43,7 @@ const SegementTrtDiffLabel = ({ chartsData }) => {
       {gridRefs.current.map((ref, index) => (
         <div key={index} 
           ref={ref} 
-          className={styles.segmentIndividualLabelsGroupEach}>
+          className={styles.segmentLabelsGroupEach}>
         </div>
       ))}
     </div>   

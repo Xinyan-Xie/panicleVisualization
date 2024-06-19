@@ -13,9 +13,12 @@ function transformDataForDay10Graph(jsonData, sampleDayObject) {
     "id": "plantBasePoint", 
     "name": "plantBasePoint",
     "color": "darkgrey",
-    "x": (jsonData["panicle"]["basePos"][0] - 10) * 1.5,
-    "y": (0 - 100) * 1.5,
-    "z": (jsonData["panicle"]["basePos"][1]) * 1.5};
+    // "x": (jsonData["panicle"]["basePos"][0] - 10) * 1.5,
+    // "y": (0 - 100) * 1.5,
+    // "z": (jsonData["panicle"]["basePos"][1]) * 1.5};
+    "x": 0,
+    "y": 0 - 180,
+    "z": 0};
   nodes.push(basePoint);
 
 
@@ -25,18 +28,21 @@ function transformDataForDay10Graph(jsonData, sampleDayObject) {
       "id": branchTopId + '_top', 
       "name": branchTopId,
       "color": sampleDayObject["color"],
-      "x": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][0] - 10) * 1.5,
-      "y": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][2] - 100) * 1.5,
-      "z": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][1])  * 1.5};
+      // "x": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][0] - 10) * 1.5,
+      // "y": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][2] - 100) * 1.5,
+      // "z": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][1])  * 1.5};
+      "x": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][0]) * 1.8,
+      "y": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][2]) * 1.8 - 180,
+      "z": (jsonData["branch10Day"]["branchInd_" + i]["branchUpperPos"][1]) * 1.8};
     nodes.push(eachBranchTop);
     let branchEndId = 'branch_' + i;
     let eachBranchEnd = {
       "id": branchEndId + '_end', 
       "name": branchEndId,
       "color": sampleDayObject["color"],
-      "x": (jsonData["branch10Day"]["branchInd_" + i]["branchLowerPos"][0] - 10) * 1.5,
-      "y": (jsonData["branch10Day"]["branchInd_" + i]["branchLowerPos"][2] - 100) *1.5,
-      "z": (jsonData["branch10Day"]["branchInd_" + i]["branchLowerPos"][1]) * 1.5};
+      "x": (jsonData["branch10Day"]["branchInd_" + i]["branchLowerPos"][0]) * 1.8,
+      "y": (jsonData["branch10Day"]["branchInd_" + i]["branchLowerPos"][2]) * 1.8 - 180,
+      "z": (jsonData["branch10Day"]["branchInd_" + i]["branchLowerPos"][1]) * 1.8};
     nodes.push(eachBranchEnd);
     // console.log("eachBranchTop, ", eachBranchTop)
     let branch = {
@@ -85,14 +91,14 @@ function transformDataForDay10Radar(jsonData, sampleDayObject, equations) {
   for (let i = 0; i < jsonData.panicle.noTopSeeds; i++) {
     let branchTopId = 'branch_' + i;
     radarData[branchTopId] = [[
-      {axis: "volumeBranch", value: jsonData["branch10Day"]["branchInd_" + i]["volumeBranch"] / 10000,},
+      {axis: "volumeBranch", value: jsonData["branch10Day"]["branchInd_" + i]["volumeBranch"] / 1000,},
       {axis: "lengthBranch", value: jsonData["branch10Day"]["branchInd_" + i]["lengthBranch"] / 300, },
-      {axis: "angleBranch", value: jsonData["branch10Day"]["branchInd_" + i]["angleBranch"] / 90, },
+      {axis: "angleBranch", value: jsonData["branch10Day"]["branchInd_" + i]["angleBranch"] / 45, },
       {axis: "noSeed", value: jsonData.panicle.noTopSeeds / 20, },
-      {axis: "branchAverageR", value: calculateVegetationIndex(equations.equation1, jsonData["branch10Day"]["branchInd_" + i]) / 255, },
-      {axis: "branchAverageG", value: calculateVegetationIndex(equations.equation2, jsonData["branch10Day"]["branchInd_" + i]) / 255, },
-      {axis: "branchAverageB", value: calculateVegetationIndex(equations.equation3, jsonData["branch10Day"]["branchInd_" + i]) / 255, },
-      {axis: "branchAverageBB",value: calculateVegetationIndex(equations.equation4, jsonData["branch10Day"]["branchInd_" + i]) / 255, },
+      {axis: "branchAverageR", value: calculateVegetationIndex(equations.equation1, jsonData["branch10Day"]["branchInd_" + i]), },
+      {axis: "branchAverageG", value: calculateVegetationIndex(equations.equation2, jsonData["branch10Day"]["branchInd_" + i]), },
+      {axis: "branchAverageB", value: calculateVegetationIndex(equations.equation3, jsonData["branch10Day"]["branchInd_" + i]), },
+      {axis: "branchAverageBB",value: calculateVegetationIndex(equations.equation4, jsonData["branch10Day"]["branchInd_" + i]), },
       // {axis: "branchAverageR", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageR"] / 255, },
       // {axis: "branchAverageG", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageG"] / 255, },
       // {axis: "branchAverageB", value: jsonData["branch10Day"]["branchInd_" + i]["branchAverageB"] / 255, },

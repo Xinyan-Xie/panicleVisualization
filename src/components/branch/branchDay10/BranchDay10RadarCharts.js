@@ -27,7 +27,7 @@ const BranchDay10RadarCharts = ({ chartsBranchDataSample, branchIndex }) => {
       data = transformDataForNone();
     }
 
-    RadarChart(radarRef.current, data, [chartsBranchDataSample["color"]], 200, 200);
+    RadarChart(radarRef.current, data, [chartsBranchDataSample["color"]], 210, 210);
   }, [chartsBranchDataSample, branchIndex]);
 
   return (

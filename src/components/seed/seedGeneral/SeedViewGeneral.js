@@ -10,8 +10,10 @@ function transformDataForSeedGeneral(jsonData) {
   
   for (let i = 0; i < numTopSeed; i++) {
     let key = `TopSeedInd_${i}`;
-    seedPos.push([(jsonData["topSeeds"][key]["topSeedPos"][0] - jsonData["panicle"]["basePos"][0]) * 2.5, 
-                  (jsonData["topSeeds"][key]["topSeedPos"][1] - jsonData["panicle"]["basePos"][1]) * 2.5]);
+    // seedPos.push([(jsonData["topSeeds"][key]["topSeedPos"][0] - jsonData["panicle"]["basePos"][0]) * 2.5, 
+    //               (jsonData["topSeeds"][key]["topSeedPos"][1] - jsonData["panicle"]["basePos"][1]) * 2.5]);
+    seedPos.push([(jsonData["topSeeds"][key]["topSeedPos"][0]) * 2.5, 
+                  (jsonData["topSeeds"][key]["topSeedPos"][1]) * 2.5]);
   }
   return seedPos;
 }
@@ -95,6 +97,14 @@ const SeedViewGeneral = ({ dataMaps }) => {
       <div className={styles.seedVector}>
         <div className={styles.seedVectorName}> 
           Seed Vector
+        </div>
+        <div className={styles.seedSubVectorName}> 
+          <div className={styles.seedSubSubVectorName}> 
+            CONTROL
+          </div>
+          <div className={styles.seedSubSubVectorName}> 
+            HDNT
+          </div>
         </div>
         <VectorChartPlot seedGeneralData={seedGeneralData}/>
       </div>

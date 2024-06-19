@@ -1,0 +1,31 @@
+.image_container {
+    position: relative;
+    width: 109px; /* Adjust as needed */
+    height: 590px; /* Adjust as needed */
+    background-image: url('./partExampleImg.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .overlay_div {
+    flex: 1; /* Each div takes up an equal portion of the container */
+    height: 33.3%;
+    width: 100%;
+    /* border: 2px solid transparent;  */
+    /* Default transparent border */
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .inner_div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 1); /* Black background for overlay */
+    background-clip: padding-box;
+  }
+  

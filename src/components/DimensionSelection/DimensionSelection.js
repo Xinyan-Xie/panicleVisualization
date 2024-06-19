@@ -27,9 +27,26 @@ const DimensionSelection = ({ onFetchChartData, equations, onEquationChange }) =
           onEquationChange={onEquationChange}
         />
       </div>
+      
+
+      <div className={styles.thirdRow}>
+        <h2 className={styles.dimensionTitle}>
+          Feature Demonstration
+        </h2>
+        
+        <div>
+          <img src="demo1.png" style={{ width: '99%', height: '100%', margin: '2px' }} />
+        </div>
+
+        <div className={styles.thirdRowEach}>
+          <img src="demo2.png" style={{ width: '100%', height: '100%' }} />
+        </div>
+      </div>
+
       <div>
         <DimensionColorMapping/>
       </div>
+      
       
     </div>
   );

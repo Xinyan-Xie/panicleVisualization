@@ -8,6 +8,16 @@
 .segmentIndividualLabelsGroupEach {
   float: left;
   width: 98%;
-  aspect-ratio: 1 / 1.207;
+  aspect-ratio: 1 / 1.185;
+  /* border: 2px solid red; */
   /* border: 1px solid lightgrey; */
 }
+
+.segmentLabelsGroupEach {
+  float: left;
+  width: 98%;
+  aspect-ratio: 1 / 1.207;
+  /* border: 2px solid red; */
+  /* border: 1px solid lightgrey; */
+}
+

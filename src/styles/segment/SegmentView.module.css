@@ -1,8 +1,9 @@
 .segmentView {
   position: relative;
   border: 2px solid darkgray;
+  /* border: 1px solid red; */
   /* float: left; */
-  height: 1234.8px;
+  height: 1218px;
   width: 100%;
   }
 
@@ -18,21 +19,22 @@
 
 .segmentIndividualTimeDiff {
   position: relative;
-  border: 2px solid darkgray;
-  /* border: 2px solid red; */
+  border: 1px solid darkgray;
+  /* border: 1px solid red; */
   width: 98%;
   margin: 3px auto 3px auto;
-  height: 600px;
+  height: 590px;
   overflow: auto;
 }
 
 .segmentIndividualLabel {
   position: absolute;
-  left: 0.5%;
+  left: 1%;
   /* border: 2px solid darkgray; */
   /* border: 2px solid red; */
   width: 17%;
   margin: 3px auto 3px auto;
+  margin: auto;
 }
 
 .segmentIndividualLabelBlankName {
@@ -48,11 +50,12 @@
 
 .segmentIndividual {
   position: absolute;
-  left: 18.5%;
-  border: 1px solid darkgray;
+  left: 18.8%;
+  /* border: 1px solid darkgray; */
   /* border: 2px solid red; */
   width: 60%;
   margin: 3px auto 3px auto;
+  margin: auto;
   /* height: 98%; */
   /* border: 2px solid red; */
 }
@@ -71,27 +74,29 @@
   position: absolute;
   /* left: 68%; */
   right: 0.5%;
-  border: 1px solid darkgray;
-  /* border: 2px solid red; */
+  /* border: 1px solid darkgray; */
+  /* border: 1px solid red; */
   width: 20%;
   margin: 3px auto 3px auto;
+  margin: auto;
+  
   /* height: 98%; */
 }
 
 .segmentTrtDiff {
   position: relative;
-  border: 2px solid darkgray;
+  border: 1px solid darkgray;
   width: 98%;
   margin: 3px auto 3px auto;
-  height: 280px;
+  height: 281px;
 }
 
 .segmentGenoDiff {
   position: relative;
-  border: 2px solid darkgray;
+  border: 1px solid darkgray;
   width: 98%;
   margin: 3px auto 3px auto;
-  height: 280px;
+  height: 281px;
 }
 
 

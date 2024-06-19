@@ -3,6 +3,7 @@ import styles from '../../styles/parts/PartsView.module.css';
 import ThreePartsButtonSelection from './ThreePartsButtonSelection';
 import PartsViewRadarCharts from './PartsViewRadarCharts';
 import PartsViewTimeRadar from './PartsViewTimeRadar';
+import ImageDivs from './ImageDivs';
 
 const PartsView = ({ dataMaps, equations }) => {
 
@@ -24,12 +25,19 @@ const PartsView = ({ dataMaps, equations }) => {
             dataMaps={dataMaps}
             buttonIndex={activeButton}
         /> */}
-
-        <PartsViewTimeRadar 
-            dataMaps={dataMaps}
-            buttonIndex={activeButton}
-            equations={equations}
-        />
+        <div className={styles.partsPlotGroup}>
+          <div className={styles.examplePlant}>
+            <ImageDivs buttonIndex={activeButton} />
+          </div>
+          <div className={styles.radarBox}>
+            <PartsViewTimeRadar 
+                dataMaps={dataMaps}
+                buttonIndex={activeButton}
+                equations={equations}
+            />
+          </div>
+        </div>
+        
 
     </div>
 

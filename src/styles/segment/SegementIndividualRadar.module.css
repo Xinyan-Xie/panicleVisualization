@@ -1,9 +1,10 @@
 .segmentIndividualChartsGroup {
   /* height: 93%; */
-  width: 98%;
-  /* margin: auto; */
+  width: 98.5%;
+  
   position: relative;
-  left: 1%;
+  left: 0.5%;
+  margin: auto;
   /* border: 2px solid red; */
 }
 
@@ -18,7 +19,7 @@
   position: relative;
 }
 
-.tooltip {
+/* .tooltip {
   position: absolute;
   text-align: center;
   width: auto;
@@ -34,4 +35,4 @@
   align-items: center;
   font-weight: bold;
   color: black;
-}
+} */

@@ -14,4 +14,28 @@
   align-items: center;
   /* height: 100vh; Full viewport height for centering vertically */
 }
-  
+
+.partsPlotGroup {
+  /* border: 2px solid red; */
+  position: relative;
+  width: 98%;
+  height: 595px;
+  margin: auto;
+}
+
+.examplePlant {
+  position: absolute;
+  top: 3px;
+  left: 20px;
+  /* border: 2px solid orange; */
+  width: 120px;
+}
+
+.radarBox {
+  position: absolute;
+  top: 3px;
+  left: 130px;
+  /* border: 2px solid orange; */
+  width: 80%;
+  height: 99%;
+}

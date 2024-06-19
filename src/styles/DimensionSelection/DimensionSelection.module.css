@@ -1,7 +1,7 @@
 .dimensionSelection {
   position: relative;
   border: 2px solid darkgray;
-  height: 370px;
+  height: 410px;
   /* width: 400px; */
 }
   
@@ -17,4 +17,21 @@
   /* margin-bottom: 20px;  */
   /* grid-template-rows: 1fr; */
   /* display: top; */
+}
+
+.thirdRow {
+  position: relative;
+  border: 2px solid darkgray;
+  height: 851px;
+  margin-top: 3px;
+  /* width: 400px; */
+}
+
+.thirdRowEach {
+  position: relative;
+  border: 2px solid lightgray;
+  /* height: 924px; */
+  width: 97%;
+  margin: auto;
+  margin-top: 5px;
 }

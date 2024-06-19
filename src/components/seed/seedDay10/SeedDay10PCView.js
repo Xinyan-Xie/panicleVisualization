@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PointCloud from './PointCloud';
+import PointCloud from './PointCloud_ori';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
@@ -18,8 +18,8 @@ const SeedDay10PCView = ( {chartsBranchDataSample, branchIndex} ) => {
     if (branchIndex) {
     
       let branchName = chartsBranchDataSample["link"].substring(0, 5) + '/' + 
-                      chartsBranchDataSample["link"].split('_Info')[0] + '/seed/' + 
-                      chartsBranchDataSample["link"].split('_Info')[0] + '_branches_' + branchIndex + '_seeds.txt'
+                      chartsBranchDataSample["link"].split('_Info')[0] + '/branchSeg/' + 
+                      chartsBranchDataSample["link"].split('_Info')[0] + '_brancheSeg_' + branchIndex + '.txt'
       fetch(`/data/branchDay10/${branchName}`)
       .then(response => response.text())
       .then(text => {
@@ -33,12 +33,11 @@ const SeedDay10PCView = ( {chartsBranchDataSample, branchIndex} ) => {
             let tempY = parseFloat(wordsArray[1]);
             let tempZ = parseFloat(wordsArray[2]);
 
-            let colorR = parseInt(wordsArray[3]);
-            let colorG = parseInt(wordsArray[4]);
-            let colorB = parseInt(wordsArray[5]);
+            let colorR = parseInt(wordsArray[3] * 255);
+            let colorG = parseInt(wordsArray[4] * 255);
+            let colorB = parseInt(wordsArray[5] * 255);
 
             let pointLabel = parseInt(wordsArray[6]);
-
             pointsData.push({
               x: tempX,
               y: tempY,
@@ -78,7 +77,7 @@ const SeedDay10PCView = ( {chartsBranchDataSample, branchIndex} ) => {
     <div>
       <Canvas
         camera={{ position: [0, 1.5, 0], fov: 60 }}
-        style={{ background: 'white', height: '200px', width: '200px', border: '1px solid darkgray' }}>
+        style={{ background: 'white', height: '210px', width: '210px', border: '1px solid darkgray' }}>
         <ambientLight intensity={1.0} />
         <pointLight position={[10, 10, 10]} />
         <PointCloud points={points} />

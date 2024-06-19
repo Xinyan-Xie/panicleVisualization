@@ -4,7 +4,7 @@
 .vegIndexcontainer {
     position: relative;
     border: 2px solid darkgray;
-    height: 188px;
+    height: 222px;
     margin-top: 5px;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@
   .inputGroup {
     position: absolute;
     width: 90%;
-    margin: auto 3px;
+    margin: 10px 3px;
     /* right: 2px; */
     top: 40px;
     /* border: 2px solid orange; */
@@ -35,7 +35,7 @@
 
   .inputGroup div {
     position: relative;
-    margin: 5px auto;
+    margin: 8px auto;
     width: 90%;
     /* margin: 0 5px; */
     /* flex: 1; */

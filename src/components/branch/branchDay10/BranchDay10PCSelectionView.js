@@ -14,13 +14,13 @@ const BranchDay10PCSelectionView = ( {chartsBranchDataSample} ) => {
   };
 
   return (
-    <div>
+    <div className={styles.dayTenPCPlot}>
       <select id="branch-select"
               value={selectedBranchOption}
               onChange={handleChange} 
-              style={{ width: '100%', height: '50px' , 
-                      marginTop: '5px', marginBottom: '5px', 
-                      fontSize: 18}} >
+              style={{ width: '100%', height: '60px' , 
+                      marginTop: '3px', marginBottom: '5px', 
+                      fontSize: 20}} >
         <option value="" disabled>Select a branch</option>
         {branchIndexArray.map((branchIndex) => (
           <option key={branchIndex} value={branchIndex}>

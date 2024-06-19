@@ -1,12 +1,13 @@
-import React, { useMemo, useState, useRef } from 'react';
+import React, { useMemo, useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
-import { useThree, useFrame } from '@react-three/fiber';
+import { useThree, extend } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 
 const PointCloud = ({ points }) => {
-  const [hoveredPoint, setHoveredPoint] = useState(null);
-  const { camera, size } = useThree();
+  const [clickedPoint, setClickedPoint] = useState(null);
+  const [clickedLabel, setClickedLabel] = useState(null);
   const pointsRef = useRef();
+  const { camera } = useThree();
 
   const mesh = useMemo(() => {
     const geometry = new THREE.BufferGeometry();
@@ -14,11 +15,10 @@ const PointCloud = ({ points }) => {
     const colors = [];
     const color = new THREE.Color();
 
-    points.forEach(point => {
+    points.forEach((point) => {
       positions.push(point.x, point.y, point.z);
-      // const rgb = point.color.match(/\d+/g).map(Number);
-      // color.setRGB(rgb[0] / 255, rgb[1] / 255, rgb[2] / 255);
       color.set(point.color);
+      // color.setRGB(point.r / 255, point.g / 255, point.b / 255); // Normalize RGB values to [0, 1]
       colors.push(color.r, color.g, color.b);
     });
 
@@ -29,55 +29,43 @@ const PointCloud = ({ points }) => {
     return new THREE.Points(geometry, material);
   }, [points]);
 
-  const handlePointerMove = (event) => {
-    event.stopPropagation();
-    const { index } = event;
-    setHoveredPoint(points[index]);
-  };
+  useEffect(() => {
+    const handlePointerDown = (event) => {
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
 
-  const handlePointerOut = () => {
-    setHoveredPoint(null);
-  };
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-  useFrame(() => {
-    if (hoveredPoint) {
-      const vector = new THREE.Vector3(hoveredPoint.x, hoveredPoint.y, hoveredPoint.z);
-      vector.project(camera);
-      hoveredPoint.screenPosition = {
-        x: (vector.x * 0.5 + 0.5) * size.width,
-        y: (vector.y * -0.5 + 0.5) * size.height
-      };
-    }
-  });
+      raycaster.setFromCamera(mouse, camera);
+
+      const intersects = raycaster.intersectObject(pointsRef.current);
+      if (intersects.length > 0) {
+        const intersect = intersects[0];
+        setClickedPoint(intersect.point);
+        setClickedLabel(points[intersect.index].label);
+      } else {
+        setClickedPoint(null);
+        setClickedLabel(null);
+      }
+    };
+
+    window.addEventListener('pointerdown', handlePointerDown);
+
+    return () => {
+      window.removeEventListener('pointerdown', handlePointerDown);
+    };
+  }, [camera, points]);
 
   return (
-    <>
-      <primitive
-        ref={pointsRef}
-        object={mesh}
-        onPointerMove={handlePointerMove}
-        onPointerOut={handlePointerOut}
-      />
-      {hoveredPoint && hoveredPoint.screenPosition && (
-        <Html>
-          <div style={{
-            position: 'absolute',
-            // top: hoveredPoint.screenPosition.y,
-            // left: hoveredPoint.screenPosition.x,
-            top: 0,
-            left: 0,
-            // transform: 'translate(-50%, -50%)',
-            background: 'rgba(255, 255, 255, 0.8)',
-            // background: 'rgba(0, 0, 0, 0.8)',
-            padding: '5px',
-            borderRadius: '3px',
-            pointerEvents: 'none'
-          }}>
-            {hoveredPoint.label}
-          </div>
+    <group>
+      <primitive object={mesh} ref={pointsRef} />
+      {clickedPoint && clickedLabel && (
+        <Html position={[clickedPoint.x, clickedPoint.y, clickedPoint.z]}>
+          <div className="label">{clickedLabel}</div>
         </Html>
       )}
-    </>
+    </group>
   );
 };
 

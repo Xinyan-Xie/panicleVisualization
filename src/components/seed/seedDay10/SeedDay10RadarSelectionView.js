@@ -18,7 +18,7 @@ const SeedDay10RadarSelectionView = ( {chartsBranchDataSample, branchIndex, equa
               value={selectedSeedOption}
               onChange={handleChange} 
               style={{ width: '100%', height: '50px' , 
-                      marginTop: '5px', marginBottom: '5px', 
+                      marginTop: '5px', marginBottom: '0px', 
                       fontSize: 18}} >
         <option value="" disabled>Select a seed</option>
         {seedIndexArray.map((seedIndex) => (

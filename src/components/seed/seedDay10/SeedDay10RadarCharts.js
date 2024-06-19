@@ -17,16 +17,16 @@ function calculateVegetationIndex(equation, data) {
 
 // Function to transform JSON data into a suitable format for the RadarChartComponent
 function transformSeedRadarDataForDay10(jsonData, branchIndex, seedIndex, equations) {
-  let seedData  = jsonData["branch10Day"]["branchInd_" + branchIndex]["branchSeed"]["branchSeedInd" + seedIndex];
+  let seedData  = jsonData["branch10Day"]["branchInd_" + branchIndex]["branchSeed"]["branchSeedInd_" + seedIndex];
   let seedRadarData = [[
-    {axis: "volumeSeed", value: seedData["seedVolume"] / 5000,},
-    {axis: "lengthSeed", value: seedData["seedLength"] / 300, },
-    {axis: "widthSeed", value: seedData["seedWidth"] / 90, },
-    {axis: "indSeed", value: seedIndex / 20, },
-    {axis: "branchAverageR", value: calculateVegetationIndex(equations.equation1, seedData) / 255, },
-    {axis: "branchAverageG", value: calculateVegetationIndex(equations.equation2, seedData) / 255, },
-    {axis: "branchAverageB", value: calculateVegetationIndex(equations.equation3, seedData) / 255, },
-    {axis: "branchAverageBB", value: calculateVegetationIndex(equations.equation4, seedData) / 255, },
+    {axis: "volumeSeed", value: seedData["seedVolume"] / 100,},
+    {axis: "lengthSeed", value: seedData["seedLength"] / 30, },
+    {axis: "widthSeed", value: seedData["seedWidth"] / 30, },
+    {axis: "indSeed", value: seedIndex / 15, },
+    {axis: "branchAverageR", value: calculateVegetationIndex(equations.equation1, seedData), },
+    {axis: "branchAverageG", value: calculateVegetationIndex(equations.equation2, seedData), },
+    {axis: "branchAverageB", value: calculateVegetationIndex(equations.equation3, seedData), },
+    {axis: "branchAverageBB", value: calculateVegetationIndex(equations.equation4, seedData), },
     // {axis: "branchAverageR", value: seedData["seedAverageR"] / 255, },
     // {axis: "branchAverageG", value: seedData["seedAverageG"] / 255, },
     // {axis: "branchAverageB", value: seedData["seedAverageB"] / 255, },
@@ -43,7 +43,7 @@ const SeedDay10RadarCharts = ({ chartsBranchDataSample, branchIndex, seedIndex, 
       .then(response => response.json())
       .then(data => {
         let seedRadarDataNotZero = transformSeedRadarDataForDay10(data, branchIndex, seedIndex, equations);
-        RadarChart(radarRef.current, seedRadarDataNotZero, [chartsBranchDataSample["color"]], 200, 200);
+        RadarChart(radarRef.current, seedRadarDataNotZero, [chartsBranchDataSample["color"]], 210, 210);
       })
       .catch(error => console.error('Error fetching data:', error));
   // });

@@ -19,7 +19,7 @@ function transformPartsRadarData(jsonData, buttonIndex, equations) {
   const partData = "segmentInd_" + buttonIndex;
   const dataForChart = [
     { axis: 'Height', value: jsonData["segment"][partData]["endHeight"] / 300 },
-    { axis: 'Volume', value: jsonData["segment"][partData]["volumeSeg"] / 10000 },
+    { axis: 'Volume', value: jsonData["segment"][partData]["volumeSeg"] / 5000 },
     { axis: 'Spread', value: jsonData["segment"][partData]["maxSpreadSegVal"] / 50 },
     { axis: 'Branches', value: jsonData["segment"][partData]["noTopSeedSeg"] / 10 },
     { axis: 'Vegetation Index 1', value: calculateVegetationIndex(equations.equation1, jsonData["segment"][partData]) },

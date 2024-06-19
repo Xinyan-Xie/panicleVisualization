@@ -28,13 +28,22 @@ const BranchDay10PCView = ( {chartsBranchDataSample, branchIndex} ) => {
 
           let tempX = parseFloat(wordsArray[0]);
           let tempY = parseFloat(wordsArray[1]);
-          let tempZ = parseFloat(wordsArray[2]);
+          let tempZ = parseFloat(-1 * wordsArray[2]);
+          let tempR = parseFloat(wordsArray[3]);
+          let tempG = parseFloat(wordsArray[4]);
+          let tempB = parseFloat(wordsArray[5]);
+
+          console.log("branch " + tempR + " " + tempG + " " + tempB)
 
           pointsData.push({
             x: tempX,
             y: tempY,
             z: tempZ,
-            color: `rgb(${wordsArray[3]}, ${wordsArray[4]}, ${wordsArray[5]})`
+            // r: tempR,
+            // g: tempG,
+            // b: tempB
+            // color: `rgb(${wordsArray[3]}, ${wordsArray[4]}, ${wordsArray[5]})`
+            color: `rgb(${tempR}, ${tempG}, ${tempB})`
           });
 
           minX = minX > tempX ? tempX : minX;
@@ -59,15 +68,15 @@ const BranchDay10PCView = ( {chartsBranchDataSample, branchIndex} ) => {
       setPoints(pointsData);
     })
     .catch(error => console.error('Error loading the file', error));
-  });  
-  // }, [chartsBranchDataSample]);
+  // });  
+  }, [chartsBranchDataSample]);
   
 
   return (
     <div>
       <Canvas
         camera={{ position: [0, 1.5, 0], fov: 60 }}
-        style={{ background: 'white', height: '200px', width: '200px', border: '1px solid darkgray' }}>
+        style={{ background: 'white', height: '210px', width: '210px', border: '1px solid darkgray' }}>
         <ambientLight intensity={1.0} />
         <pointLight position={[10, 10, 10]} />
         <PointCloud points={points} />

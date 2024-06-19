@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SeedDay10PCView from './SeedDay10PCView';
+import BranchSegDay10 from './BranchSegDay10';
 import SeedDay10RadarSelectionView from './SeedDay10RadarSelectionView';
 
 const BranchDay10PCSelectionView = ( {chartsBranchDataSample, equations } ) => {
@@ -27,13 +28,18 @@ const BranchDay10PCSelectionView = ( {chartsBranchDataSample, equations } ) => {
           </option>
         ))}
       </select>
-      <SeedDay10PCView 
+
+      <BranchSegDay10 
         chartsBranchDataSample={chartsBranchDataSample}
         branchIndex={selectedBranchOption} />
-      <SeedDay10RadarSelectionView 
+      
+      {/* <SeedDay10PCView 
+        chartsBranchDataSample={chartsBranchDataSample}
+        branchIndex={selectedBranchOption} /> */}
+      {/* <SeedDay10RadarSelectionView 
         chartsBranchDataSample={chartsBranchDataSample} 
         branchIndex={selectedBranchOption} 
-        equations={equations} />
+        equations={equations} /> */}
     </div>
   );
 };

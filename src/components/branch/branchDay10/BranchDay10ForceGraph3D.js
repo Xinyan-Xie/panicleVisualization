@@ -6,6 +6,11 @@ import styles from '../../../styles/branch/branchDay10/BranchDay10ForceGraph3D.m
 
 const BranchDay10ForceGraph3D = ( {chartsBranchData} ) => {
 
+
+  // useEffect(() => { 
+  //   console.log(chartsBranchData);
+  // });
+
   return (
     <div className={styles.dayTenOutline}>
 
@@ -18,8 +23,8 @@ const BranchDay10ForceGraph3D = ( {chartsBranchData} ) => {
                 nodeAutoColorBy="color"
                 linkDirectionalParticles="value"
                 linkDirectionalParticleWidth={2}
-                width={200}
-                height={550}
+                width={210}
+                height={545}
                 showNavInfo={false}
                 nodeThreeObject={node => {
                   const material = new THREE.MeshBasicMaterial({ color: node.color });

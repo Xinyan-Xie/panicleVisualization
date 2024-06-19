@@ -10,14 +10,18 @@
 }
 
 .DayTenViewIndividual {
+  /* border: 1px solid red; */
   /* border: 1px solid darkgray; */
-  /* height: 1120px; */
-  width: 200px;
-  margin: 10px;
+  height: 1110px;
+  width: 210px;
+  margin-left: 13px;
+  margin-top: 1px;
 }
 
 .DayTenGraph {
   border: 1px solid darkgray;
-  width: 200px;
-  height: 550px;
+  /* border: 1px solid red; */
+  /* margin-top: 20px; */
+  width: 210px;
+  height: 545px;
 }

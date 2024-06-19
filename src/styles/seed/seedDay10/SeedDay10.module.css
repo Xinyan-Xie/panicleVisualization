@@ -3,7 +3,7 @@
   left: 35.5%;
   top: 48px;
   width: 64%;
-  height: 593px;
+  height: 595px;
   border: 1px solid darkgray;
   /* border: 1px solid red; */
   margin: 3px auto 3px auto;
@@ -20,7 +20,7 @@
 
   .dayTenOutline {
     /* border: 2px solid red; */
-    /* height: 1120px; */
+    height: 550px;
     display: flex;              /* Align children in a row */
     overflow-x: auto;           /* Enable horizontal scrolling */
     white-space: nowrap;        /* Ensure the children don't wrap to the next line */
@@ -32,6 +32,7 @@
   .DayTenViewIndividual {
     /* border: 1px solid darkgray; */
     /* height: 1120px; */
-    width: 200px;
-    margin: 10px;
+    width: 210px;
+    /* margin-top: 0px; */
+    margin-left: 10px;
   }

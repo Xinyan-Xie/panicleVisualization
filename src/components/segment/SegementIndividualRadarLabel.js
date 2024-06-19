@@ -22,7 +22,7 @@ const SegementIndividualRadarLabel = ({ chartsData }) => {
             // newDiv.textContent = genoPart;
             // div.appendChild(newDiv);
             div.innerHTML = `
-              <div style="height: 50px; width: 90%; 
+              <div style="height: 50px; width: 93%; 
                           text-align: center;
                           font-size: 18px;
                           font-weight: bold;
